@@ -3,7 +3,7 @@ SBAR.exec("sketchybar --add event brew_update")
 local brew = SBAR.add("item", "brew", {
     position = "right",
     icon = {
-        string = "􀐛",
+        string = ICONS.brew,
         color = COLORS.text,
     },
     label = {
@@ -60,7 +60,7 @@ end
 -- 渲染 bar item
 local function render_bar_item(count)
     local color = COLORS.green
-    local label = "􀆅"
+    local label = ICONS.brew_check
 
     if count >= 30 then
         color = COLORS.red

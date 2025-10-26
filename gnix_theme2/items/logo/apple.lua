@@ -1,12 +1,10 @@
-local icons = require("icons")
-
 -- Padding item required because of bracket
 SBAR.add("item", { width = 5 })
 
 local apple = SBAR.add("item", {
   icon = {
     font = { size = 22.0 },
-    string = icons.apple,
+    string = ICONS.apple,
     color = COLORS.lavender,
     padding_right = 8,
     padding_left = 8,

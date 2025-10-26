@@ -18,6 +18,7 @@ PADDINGS = 3
 GROUP_PADDINGS = 5
 
 COLORS = require("colors")
+ICONS = require("icons")
 
 SBAR.begin_config()
 

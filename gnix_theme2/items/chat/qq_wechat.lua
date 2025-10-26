@@ -1,5 +1,3 @@
-local icons = require("icons")
-
 local function get_app_status(app_name)
     SBAR.exec(
         "lsappinfo -all list | rg " .. app_name .. " | rg -o '\"StatusLabel\"=\\{ \"label\"=\"?([^\"]*)\"? \\}' -r '$1'",
@@ -15,7 +13,7 @@ end
 local qq = SBAR.add("item", "qq", {
     position = "right",
     icon = {
-        string = icons.qq,
+        string = ICONS.qq,
         font = {
             style = FONT.style_map["Regular"],
             size = 16.0,
@@ -33,7 +31,7 @@ end)
 local wechat = SBAR.add("item", "wechat", {
     position = "right",
     icon = {
-        string = icons.wechat,
+        string = ICONS.wechat,
         font = {
             style = FONT.style_map["Regular"],
             size = 20.0,

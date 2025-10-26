@@ -1,12 +1,10 @@
-local icons = require("icons")
-
 local popup_width = 150
 
 local volume_icon = SBAR.add("item", "widgets.volume", {
   position = "right",
   padding_right = -1,
   icon = {
-    string = icons.volume._100,
+    string = ICONS.volume._100,
     width = 0,
     align = "left",
     color = COLORS.yellow,
@@ -46,15 +44,15 @@ local volume_slider = SBAR.add("slider", popup_width, {
 
 volume_icon:subscribe("volume_change", function(env)
   local volume = tonumber(env.INFO)
-  local new_icon = icons.volume._0
+  local new_icon = ICONS.volume._0
   if volume > 60 then
-    new_icon = icons.volume._100
+    new_icon = ICONS.volume._100
   elseif volume > 30 then
-    new_icon = icons.volume._66
+    new_icon = ICONS.volume._66
   elseif volume > 10 then
-    new_icon = icons.volume._33
+    new_icon = ICONS.volume._33
   elseif volume > 0 then
-    new_icon = icons.volume._10
+    new_icon = ICONS.volume._10
   end
 
   volume_icon:set({ icon = new_icon })

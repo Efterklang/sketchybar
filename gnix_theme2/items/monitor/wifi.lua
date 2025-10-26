@@ -1,5 +1,3 @@
-local icons = require("icons")
-
 -- Execute the event provider binary which provides the event "network_update"
 -- for the network interface "en0", which is fired every 2.0 seconds.
 SBAR.exec(
@@ -17,7 +15,7 @@ local wifi_up = SBAR.add("item", "widgets.wifi1", {
       style = FONT.style_map["Bold"],
       size = 9.0,
     },
-    string = icons.wifi.upload,
+    string = ICONS.wifi.upload,
   },
   label = {
     font = {
@@ -40,7 +38,7 @@ local wifi_down = SBAR.add("item", "widgets.wifi2", {
       style = FONT.style_map["Bold"],
       size = 9.0,
     },
-    string = icons.wifi.download,
+    string = ICONS.wifi.download,
   },
   label = {
     font = {
@@ -74,7 +72,7 @@ local ssid = SBAR.add("item", {
     font = {
       style = FONT.style_map["Bold"]
     },
-    string = icons.wifi.router,
+    string = ICONS.wifi.router,
   },
   width = popup_width,
   align = "center",
@@ -176,7 +174,7 @@ wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
     local connected = not (ip == "")
     wifi:set({
       icon = {
-        string = connected and icons.wifi.connected or icons.wifi.disconnected,
+        string = connected and ICONS.wifi.connected or ICONS.wifi.disconnected,
         color = connected and COLORS.text or COLORS.red,
       },
     })
@@ -219,7 +217,7 @@ wifi:subscribe("mouse.exited.global", hide_details)
 local function copy_label_to_clipboard(env)
   local label = SBAR.query(env.NAME).label.value
   SBAR.exec("echo \"" .. label .. "\" | pbcopy")
-  SBAR.set(env.NAME, { label = { string = icons.clipboard, align = "center" } })
+  SBAR.set(env.NAME, { label = { string = ICONS.clipboard, align = "center" } })
   SBAR.delay(1, function()
     SBAR.set(env.NAME, { label = { string = label, align = "right" } })
   end)

@@ -1,5 +1,3 @@
-local icons = require("icons")
-
 -- Execute the event provider binary which provides the event "cpu_update" for
 -- the cpu load data, which is fired every 2.0 seconds.
 SBAR.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
@@ -13,7 +11,7 @@ local cpu = SBAR.add("graph", "widgets.cpu", 42, {
         border_color = { alpha = 0 },
         drawing = true,
     },
-    icon = { string = icons.cpu, color = COLORS.lavender },
+    icon = { string = ICONS.cpu, color = COLORS.lavender },
     label = {
         string = "cpu ??%",
         font = {

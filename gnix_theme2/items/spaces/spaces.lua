@@ -1,4 +1,3 @@
-local icons = require("icons")
 local app_icons = require("helpers.app_icons")
 
 local spaces = {}
@@ -113,7 +112,7 @@ local spaces_indicator = SBAR.add("item", {
     padding_left = 8,
     padding_right = 9,
     color = COLORS.grey,
-    string = icons.switch.on,
+    string = ICONS.switch.on,
   },
   label = {
     drawing = false,
@@ -143,9 +142,9 @@ space_window_observer:subscribe("space_windows_change", function(env)
 end)
 
 spaces_indicator:subscribe("swap_menus_and_spaces", function(env)
-  local currently_on = spaces_indicator:query().icon.value == icons.switch.on
+  local currently_on = spaces_indicator:query().icon.value == ICONS.switch.on
   spaces_indicator:set({
-    icon = currently_on and icons.switch.off or icons.switch.on
+    icon = currently_on and ICONS.switch.off or ICONS.switch.on
   })
 end)
 
