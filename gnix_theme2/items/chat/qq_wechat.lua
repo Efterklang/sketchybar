@@ -1,8 +1,12 @@
 local function get_app_status(app_name)
     SBAR.exec(
-        "lsappinfo -all list | rg " .. app_name .. " | rg -o '\"StatusLabel\"=\\{ \"label\"=\"?([^\"]*)\"? \\}' -r '$1'",
+        "lsappinfo info -only StatusLabel " .. app_name,
         function(result)
-            if result == "\n" then
+            local label_match = result:match('"label"="([^"]*)"')
+
+            if label_match then
+                result = label_match
+            else
                 result = "0"
             end
 
@@ -10,7 +14,7 @@ local function get_app_status(app_name)
         end)
 end
 
-local qq = SBAR.add("item", "qq", {
+local qq = SBAR.add("item", "QQ", {
     position = "right",
     icon = {
         string = ICONS.qq,
@@ -25,7 +29,7 @@ local qq = SBAR.add("item", "qq", {
 })
 
 qq:subscribe("routine", function()
-    get_app_status("qq")
+    get_app_status("QQ")
 end)
 
 local wechat = SBAR.add("item", "wechat", {
@@ -45,3 +49,7 @@ local wechat = SBAR.add("item", "wechat", {
 wechat:subscribe("routine", function()
     get_app_status("wechat")
 end)
+
+-- Init status on sketchybar launch
+get_app_status("QQ")
+get_app_status("wechat")
