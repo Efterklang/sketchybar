@@ -47,7 +47,7 @@ SBAR.default({
         font = {
             family = FONT.numbers,
             style = FONT.style_map["Bold"],
-            size = 14.0
+            size = 16.0
         },
         color = COLORS.text,
         padding_left = PADDINGS,

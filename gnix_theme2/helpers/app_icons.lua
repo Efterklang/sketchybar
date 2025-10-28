@@ -39,7 +39,7 @@ return {
 	["Telegram"] = ":telegram:",
 	["QQ"] = ":qq:",
 	["微信"] = ":wechat:",
-    ["WeChat"] = ":wechat:",
+	["WeChat"] = ":wechat:",
 	["小红书"] = ":book:",
 
 	-- Media
