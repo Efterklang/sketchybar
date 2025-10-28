@@ -6,35 +6,18 @@ local battery = SBAR.add("item", "battery", {
       size = 19.0,
     }
   },
-  label = { font = { family = FONT.numbers } },
+  label = { drawing = false },
   update_freq = 180,
   popup = { align = "center" }
 })
 
-local remaining_time = SBAR.add("item", {
-  position = "popup." .. battery.name,
-  icon = {
-    string = "Time remaining:",
-    width = 100,
-    align = "left"
-  },
-  label = {
-    string = "??:??h",
-    width = 100,
-    align = "right"
-  },
-})
-
-
 battery:subscribe({ "routine", "power_source_change", "system_woke" }, function()
   SBAR.exec("pmset -g batt", function(batt_info)
     local icon = "!"
-    local label = "?"
 
     local found, _, charge = batt_info:find("(%d+)%%")
     if found then
       charge = tonumber(charge)
-      label = charge .. "%"
     end
 
     local color = COLORS.green
@@ -58,35 +41,62 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
       end
     end
 
-    local lead = ""
-    if found and charge < 10 then
-      lead = "0"
-    end
-
     battery:set({
       icon = {
         string = icon,
         color = color
       },
-      label = { string = lead .. label },
     })
   end)
 end)
 
-battery:subscribe("mouse.clicked", function(env)
+-- #region Popup Items
+
+local battery_percent = SBAR.add("item", {
+  position = "popup." .. battery.name,
+  icon = {
+    string = "Percentage:",
+    width = 100,
+    align = "left"
+  },
+  label = {
+    string = "??%",
+    width = 100,
+    align = "right"
+  },
+})
+
+local remaining_time = SBAR.add("item", {
+  position = "popup." .. battery.name,
+  icon = {
+    string = "Time remaining:",
+    width = 100,
+    align = "left"
+  },
+  label = {
+    string = "??:??h",
+    width = 100,
+    align = "right"
+  },
+})
+
+battery:subscribe("mouse.clicked", function()
   local drawing = battery:query().popup.drawing
   battery:set({ popup = { drawing = "toggle" } })
 
   if drawing == "off" then
     SBAR.exec("pmset -g batt", function(batt_info)
-      local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
-      local label = found and remaining .. "h" or "No estimate"
-      remaining_time:set({ label = label })
+      local found, _, charge = batt_info:find("(%d+)%%")
+      if found then
+        battery_percent:set({ label = charge .. "%" })
+      else
+        battery_percent:set({ label = "N/A" })
+      end
+
+      local found_time, _, remaining = batt_info:find(" (%d+:%d+) remaining")
+      local time_label = found_time and remaining .. "h" or "No estimate"
+      remaining_time:set({ label = time_label })
     end)
   end
 end)
-
-SBAR.add("item", "battery.padding", {
-  position = "right",
-  width = PADDINGS
-})
+-- #endregion Popup Items
