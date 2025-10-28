@@ -19,6 +19,7 @@ GROUP_PADDINGS = 5
 
 COLORS = require("colors")
 ICONS = require("icons")
+LOG = require("helpers.debug_info")
 
 SBAR.begin_config()
 
