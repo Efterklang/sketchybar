@@ -4,13 +4,14 @@ local function get_app_status(app_name)
         function(result)
             local label_match = result:match('"label"="([^"]*)"')
 
-            if label_match then
-                result = label_match
+            if label_match and label_match ~= "" then
+                SBAR.animate("tanh", 15, function()
+                    SBAR.set(app_name, { label = { string = label_match, y_offset = 5 } })
+                    SBAR.set(app_name, { label = { string = label_match, y_offset = 0 } })
+                end)
             else
-                result = "0"
+                SBAR.set(app_name, { label = { drawing = false } })
             end
-
-            SBAR.set(app_name, { label = result })
         end)
 end
 
