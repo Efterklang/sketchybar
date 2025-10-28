@@ -9,6 +9,7 @@ local stats_items = {
     "widgets.wifi1",
     "widgets.wifi2",
     "widgets.wifi.padding",
+    "widgets.ram",
 }
 
 -- 创建 separator_right item

@@ -5,4 +5,5 @@
 
 ## Credits
 
-[FelixKratz/dotfiles: My personal macOS configuration](https://github.com/FelixKratz/dotfiles)
+- [FelixKratz/dotfiles: My personal macOS configuration](https://github.com/FelixKratz/dotfiles)
+- [TheGoldenPatrik1/sketchybar-config: My personal configuration for SketchyBar](https://github.com/TheGoldenPatrik1/sketchybar-config)

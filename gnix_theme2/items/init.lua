@@ -14,6 +14,7 @@ require("items.toggle_stats.toggle_stats")
 
 require("items.monitor.wifi")
 require("items.monitor.cpu")
+require("items.monitor.mem")
 require("items.music.music")
 
 SBAR.add("bracket", "stats_bracket", {
