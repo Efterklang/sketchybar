@@ -45,7 +45,7 @@ SBAR.default({
     padding_right = PADDINGS,
     icon = {
         font = {
-            family = FONT.numbers,
+            family = FONT.nerd_font,
             style = FONT.style_map["Bold"],
             size = 16.0
         },
