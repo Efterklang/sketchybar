@@ -16,6 +16,22 @@ cp -r ./sbar/gnix_theme2 ~/.config/sketchybar
 
 Rewrite using Lua
 
+**items left**:
+
+- logo(finder)
+- workspaces/app menus
+- front app
+
+**items right**:
+
+- mpd + mpc (music player deamon+client)
+- mem, cpu, network stats
+- homebrew stats
+- wechat, qq (or any other apps)
+- volume
+- battery
+- cal & time
+
 <img width="3400" height="1922" alt="image" src="https://github.com/user-attachments/assets/4f293a12-0ee4-44bd-9aad-fe861c4aa2c8" />
 
 
@@ -23,3 +39,4 @@ Rewrite using Lua
 
 - [FelixKratz/dotfiles: My personal macOS configuration](https://github.com/FelixKratz/dotfiles)
 - [TheGoldenPatrik1/sketchybar-config: My personal configuration for SketchyBar](https://github.com/TheGoldenPatrik1/sketchybar-config)
+- [binbinsh/sketchybar-config: My sketchybar configuration files.](https://github.com/binbinsh/sketchybar-config)
