@@ -13,11 +13,11 @@ utils.get_app_status = function(CFBundleIdentifier, item)
             if label_match and label_match ~= "" then
                 if label_match ~= label_prev then -- only animate on change
                     SBAR.animate("tanh", 15, function()
-                        item:set({ label = { string = label_match, y_offset = 5 } })
-                        item:set({ label = { string = label_match, y_offset = 0 } })
+                        item:set({ label = { drawing = true, string = label_match, y_offset = 5 } })
+                        item:set({ label = { drawing = true, string = label_match, y_offset = 0 } })
                     end)
                 else
-                    item:set({ label = { string = label_match } })
+                    item:set({ label = { drawing = true, string = label_match } })
                 end
             else
                 item:set({ label = { drawing = false } })
