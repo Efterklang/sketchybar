@@ -16,7 +16,8 @@ cp -r ./sbar/gnix_theme2 ~/.config/sketchybar
 
 Rewrite using Lua
 
-<img width="3402" height="1912" alt="image" src="https://github.com/user-attachments/assets/1f83c991-9c27-43bb-aeb1-425de4071f26" />
+<img width="3400" height="1922" alt="image" src="https://github.com/user-attachments/assets/4f293a12-0ee4-44bd-9aad-fe861c4aa2c8" />
+
 
 ## Credits
 
