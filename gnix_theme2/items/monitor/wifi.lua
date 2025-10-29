@@ -175,7 +175,7 @@ wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
     wifi:set({
       icon = {
         string = connected and ICONS.wifi.connected or ICONS.wifi.disconnected,
-        color = connected and COLORS.green or COLORS.red,
+        color = connected and COLORS.blue or COLORS.red,
       },
     })
   end)
@@ -189,14 +189,16 @@ local function toggle_details()
   local should_draw = wifi_bracket:query().popup.drawing == "off"
   if should_draw then
     wifi_bracket:set({ popup = { drawing = true } })
+    SBAR.exec(
+      "networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'",
+      function(result)
+        ssid:set({ label = result })
+      end)
     SBAR.exec("networksetup -getcomputername", function(result)
       hostname:set({ label = result })
     end)
     SBAR.exec("ipconfig getifaddr en0", function(result)
       ip:set({ label = result })
-    end)
-    SBAR.exec("ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(result)
-      ssid:set({ label = result })
     end)
     SBAR.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)
       mask:set({ label = result })
