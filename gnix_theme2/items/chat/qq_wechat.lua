@@ -1,4 +1,4 @@
-local get_app_status = require("items.shared_funcs.utils").get_app_status
+local get_app_status = require("helpers.app_info").get_app_status
 
 local update_freq = 3
 
