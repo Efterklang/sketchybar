@@ -8,11 +8,6 @@ local brew = SBAR.add("item", "brew", {
     },
     label = {
         string = "?",
-        font = {
-            family = FONT.nerd_font,
-            style = FONT.style_map["Bold"],
-            size = 13.0,
-        },
     },
     update_freq = 60,
     popup = {
@@ -28,11 +23,6 @@ local brew_details = SBAR.add("item", "brew.details", {
     label = {
         string = "Outdated Brews",
         align = "left",
-        font = {
-            family = FONT.nerd_font,
-            style = FONT.style_map["Bold"],
-            size = 16.0,
-        },
         color = COLORS.maroon,
     },
     background = {
@@ -79,9 +69,7 @@ local function render_bar_item(count)
     })
 end
 
--- 渲染 popup
 local function render_popup(outdated)
-    -- 清除旧的 package items
     SBAR.remove('/brew.package\\..*/')
 
     if outdated and outdated ~= "" then
@@ -95,11 +83,6 @@ local function render_popup(outdated)
                         string = package,
                         align = "right",
                         padding_left = 20,
-                        font = {
-                            family = FONT.nerd_font,
-                            style = FONT.style_map["Regular"],
-                            size = 15.0,
-                        },
                         color = COLORS.yellow,
                     },
                 })
@@ -109,29 +92,29 @@ local function render_popup(outdated)
     end
 end
 
--- 更新函数
 local function update(sender)
     local prev_count = get_brew_count()
-    SBAR.exec("brew update")
-    SBAR.exec("brew outdated", function(outdated)
-        -- 计算过期包数量
-        local count = 0
-        if outdated and outdated ~= "" then
-            for _ in outdated:gmatch("[^\r\n]+") do
-                count = count + 1
+    -- before checking outdated, run brew update
+    SBAR.exec("/bin/zsh -lc 'brew update'", function()
+        SBAR.exec("/bin/zsh -lc 'brew outdated'", function(outdated)
+            local count = 0
+            if outdated and outdated ~= "" then
+                for _ in outdated:gmatch("[^\r\n]+") do
+                    count = count + 1
+                end
             end
-        end
 
-        render_bar_item(count)
-        render_popup(outdated)
+            render_bar_item(count)
+            render_popup(outdated)
 
-        -- 如果数量变化或强制更新，添加动画
-        if count ~= prev_count or sender == "forced" then
-            SBAR.animate("tanh", 15, function()
-                brew:set({ label = { y_offset = 5 } })
-                brew:set({ label = { y_offset = 0 } })
-            end)
-        end
+            -- 如果数量变化或强制更新，添加动画
+            if count ~= prev_count or sender == "forced" then
+                SBAR.animate("tanh", 15, function()
+                    brew:set({ label = { y_offset = 5 } })
+                    brew:set({ label = { y_offset = 0 } })
+                end)
+            end
+        end)
     end)
 end
 
