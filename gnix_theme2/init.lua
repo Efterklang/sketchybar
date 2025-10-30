@@ -1,8 +1,10 @@
 -- Require the sketchybar module
 SBAR = require("sketchybar")
+LOG = require("helpers.debug_info")
 
--- Note: Global Variables
-
+-- #region Global Variables
+-- This section contains configuration variables used throughout the theme
+-- Feel free to modify these variables to customize the theme to your liking
 FONT = {
     nerd_font = "Maple Mono NF CN",
     numbers = "Maple Mono NF CN",
@@ -16,10 +18,12 @@ FONT = {
 
 PADDINGS = 3
 GROUP_PADDINGS = 5
-
+-- Colors for the theme, default is catppuccin-mocha
 COLORS = require("colors")
+-- Font for sketchybar items
 ICONS = require("icons")
-LOG = require("helpers.debug_info")
+
+-- #endregion Config Variables
 
 SBAR.begin_config()
 
