@@ -1,5 +1,6 @@
 -- AI
 return {
+	["default"] = ":default:",
 	["ChatGPT"] = ":openai:",
 	-- Office 办公
 	["Canary Mail"] = ":mail:",
