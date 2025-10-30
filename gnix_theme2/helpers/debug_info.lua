@@ -2,7 +2,7 @@
 
 local logger = {}
 
-local log_path = (os.getenv("HOME") or "~") .. "/.cache/sbar.log"
+local log_path = (os.getenv("HOME") or "~") .. "/.cache/sketchybar/sbar.log"
 
 function logger.log(message)
     local file, err = io.open(log_path, "a")
