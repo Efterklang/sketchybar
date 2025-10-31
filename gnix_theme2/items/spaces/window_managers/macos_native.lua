@@ -13,20 +13,6 @@ local Window_Manager = {
 
 --- Initialize space items in SketchyBar
 function Window_Manager:init()
-    -- Add an observer item to monitor space window changes globally.
-    -- Unlike mouse.clicked and space_change which are bound to individual space items
-    -- (since they relate to specific space interactions), space_windows_change is a global event
-    -- that triggers whenever any space's window list changes. Using a single observer avoids
-    -- redundant subscriptions and ensures efficient event handling across all spaces.
-    local observer = SBAR.add("item", {
-        drawing = false,
-        updates = true,
-    })
-
-    observer:subscribe(self.events.window_change, function(env)
-        self:update_space_label(env)
-    end)
-
     for i = 1, 10 do
         local item = sbar_utils.add_space_item(i, i, "greek_lowercase")
         self.spaces[i] = item.space
@@ -39,6 +25,22 @@ function Window_Manager:init()
             self:perform_switch_desktop(env.BUTTON, env.SID)
         end)
     end
+end
+
+function Window_Manager:start_watcher()
+    -- Add an observer item to monitor space window changes globally.
+    -- Unlike mouse.clicked and space_change which are bound to individual space items
+    -- (since they relate to specific space interactions), space_windows_change is a global event
+    -- that triggers whenever any space's window list changes. Using a single observer avoids
+    -- redundant subscriptions and ensures efficient event handling across all spaces.
+    local watcher = SBAR.add("item", {
+        drawing = false,
+        updates = true,
+    })
+
+    watcher:subscribe(self.events.window_change, function(env)
+        self:update_space_label(env)
+    end)
 end
 
 --- @param button string the mouse button clicked

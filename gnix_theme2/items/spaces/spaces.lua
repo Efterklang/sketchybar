@@ -4,6 +4,7 @@
 -- 3. "flashspace": not implemented
 local window_manager = require("items.spaces.window_managers.macos_native")
 window_manager:init()
+window_manager:start_watcher()
 
 -- Add an indicator to switch between menus and spaces
 local spaces_indicator = SBAR.add("item", {
