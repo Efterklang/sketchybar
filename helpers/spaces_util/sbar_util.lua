@@ -18,13 +18,12 @@ local space_api = {
 -- create a sketchybar space item  and bracket
 --- @param space_id string | number The ID of the space, for aerospace, this can be "1","2"..."A","B" etc.
 --- @param idx number The index of the space, for example, 1 for first space
---- @param use_custom_label string | nil options: greek_uppercase, greek_lowercase
 --- @return table {space: space_item, bracket: bracket_item}
-function space_api.add_space_item(space_id, idx, use_custom_label)
+function space_api.add_space_item(space_id, idx)
     local space_label = space_id
-    if use_custom_label == "greek_uppercase" then
+    if SPACE_LABEL == "greek_uppercase" then
         space_label = greek_uppercase[idx] or space_id
-    elseif use_custom_label == "greek_lowercase" then
+    elseif SPACE_LABEL == "greek_lowercase" then
         space_label = greek_lowercase[idx] or space_id
     end
 

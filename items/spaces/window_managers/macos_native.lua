@@ -14,7 +14,7 @@ local Window_Manager = {
 --- Initialize space items in SketchyBar
 function Window_Manager:init()
     for i = 1, 10 do
-        local item = sbar_utils.add_space_item(i, i, "greek_lowercase")
+        local item = sbar_utils.add_space_item(i, i)
         self.spaces[i] = item.space
 
         item.space:subscribe(self.events.focus_change, function(env)

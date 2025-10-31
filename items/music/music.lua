@@ -1,4 +1,4 @@
-local client = require("items.music.mpc")
+local client = require("items.music.controller.mpc")
 
 local MUSIC_FONT = "Maple Mono NF CN"
 local POPUP_HEIGHT = 120

@@ -1,30 +1,10 @@
 -- Require the sketchybar module
 SBAR = require("sketchybar")
 LOG = require("helpers.debug_info")
-
--- #region Global Variables
--- This section contains configuration variables used throughout the theme
--- Feel free to modify these variables to customize the theme to your liking
-FONT = {
-    nerd_font = "Maple Mono NF CN",
-    numbers = "Maple Mono NF CN",
-    style_map = {
-        ["Regular"] = "Regular",
-        ["Semibold"] = "Medium",
-        ["Bold"] = "Bold",
-        ["Black"] = "ExtraBold",
-    },
-}
--- options: "macos_native", "aerospace"(experimental)
-WINDOW_MANAGER = "macos_native"
-PADDINGS = 3
-GROUP_PADDINGS = 5
--- Colors for the theme, default is catppuccin-mocha
 COLORS = require("colors")
--- Font for sketchybar items
 ICONS = require("icons")
 
--- #endregion Config Variables
+require("settings")
 
 SBAR.begin_config()
 
