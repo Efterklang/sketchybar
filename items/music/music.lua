@@ -1,4 +1,15 @@
-local client = require("items.music.controller.mpc")
+local client
+
+if MEDIA_CONTROLLER == "media-control" then
+    LOG.log("Using media-control as music controller")
+    client = require("items.music.controller.media-control")
+elseif MEDIA_CONTROLLER == "mpc" then
+    LOG.log("Using mpc as music controller")
+    client = require("items.music.controller.mpc")
+else
+    LOG.log("No valid media controller specified, defaulting to media-control")
+    client = require("items.music.controller.media-control")
+end
 
 local MUSIC_FONT = "Maple Mono NF CN"
 local POPUP_HEIGHT = 120
