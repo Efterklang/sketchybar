@@ -27,8 +27,8 @@ Rewrite using Lua, for bash version, see [here](https://github.com/Efterklang/sk
 - workspaces/app menus
 - front app
 
-> [!NOTE] Supported WM
->
+> [!NOTE]
+> Supported WM
 > - MacOS Native (default)
 > - Aerospace (experimental and buggy😅)
 >
