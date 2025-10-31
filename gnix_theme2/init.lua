@@ -15,7 +15,8 @@ FONT = {
         ["Black"] = "ExtraBold",
     },
 }
-
+-- options: "macos_native", "aerospace"(experimental)
+WINDOW_MANAGER = "macos_native"
 PADDINGS = 3
 GROUP_PADDINGS = 5
 -- Colors for the theme, default is catppuccin-mocha

@@ -1,8 +1,10 @@
--- options:
--- 1. "macos_native"
--- 2. "aerospace": not implemented
--- 3. "flashspace": not implemented
-local window_manager = require("items.spaces.window_managers.macos_native")
+local window_manager
+if WINDOW_MANAGER == "aerospace" then
+  window_manager = require("items.spaces.window_managers.aerospace")
+else
+  window_manager = require("items.spaces.window_managers.macos_native")
+end
+
 window_manager:init()
 window_manager:start_watcher()
 

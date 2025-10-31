@@ -6,6 +6,15 @@ mv ~/.config/sketchybar ~/.config/sketchybar.back
 cp -r ./sbar/gnix_theme2 ~/.config/sketchybar
 ```
 
+### Window Manager Options
+
+- MacOS Native (default)
+- Aerospace (experimental and buggy😅)
+
+```lua init.Lua
+WINDOW_MANAGER = "macos_native" -- or "aerospace"
+```
+
 ## Preview
 
 ### Gnix_Theme1 (deprecated)
