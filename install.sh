@@ -51,7 +51,7 @@ install_sketchybar() {
     latest_tag=$(curl -fsSL https://api.github.com/repos/kvndrsslr/sketchybar-app-font/releases/latest \
       | jq -r .tag_name)
 
-    output_path="$CONFIG_DIR/sketchybar/helpers/spaces_util/app_icons.lua"
+    output_path="$CONFIG_DIR/sketchybar/helpers/spaces_util/icon_map.lua"
     mkdir -p "$(dirname "$output_path")"
     curl -fsSL "https://github.com/kvndrsslr/sketchybar-app-font/releases/download/${latest_tag}/icon_map.lua" \
       -o "$output_path"
@@ -70,11 +70,11 @@ install_sketchybar() {
     git clone --depth 1 --quiet https://github.com/FelixKratz/SbarLua.git "$tmpdir"
     (cd "$tmpdir" && make install)
     success "SbarLua installed."
-
-    brew services restart sketchybar
-    sketchybar --reload
-    success "SketchyBar loaded."
   fi
+
+  brew services restart sketchybar
+  sketchybar --reload
+  success "SketchyBar loaded."
 }
 
 install_sketchybar
