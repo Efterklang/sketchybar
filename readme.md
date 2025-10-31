@@ -12,9 +12,7 @@
 ## Install
 
 ```shell
-git clone --depth=1 https://github.com/Efterklang/sketchybar.git sbar
-mv ~/.config/sketchybar ~/.config/sketchybar.back
-cp -r ./sbar ~/.config/sketchybar
+curl -fsSL https://raw.githubusercontent.com/Efterklang/sketchybar/main/install.sh | sh -s
 ```
 
 ## Preview
