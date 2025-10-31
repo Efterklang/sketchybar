@@ -1,37 +1,42 @@
+<h1 align="center">
+  <img alt="image" src="https://github.com/user-attachments/assets/4f293a12-0ee4-44bd-9aad-fe861c4aa2c8" width="60%"/>
+  <br>
+  SketchyBar Configuration
+  <br>
+  <i>part of my <a href="https://github.com/Efterklang/dotfiles">dotfiles</a></i>
+  <br>
+  <img src="https://img.shields.io/github/commit-activity/y/Efterklang/sketchybar?style=for-the-badge&labelColor=%23222436&color=%235771AA" alt="Commit Frequency">
+  <img src="https://img.shields.io/github/license/Efterklang/sketchybar?style=for-the-badge&labelColor=%23222436&color=%235771AA" alt="License">
+</h1>
+
 ## Install
 
 ```shell
 git clone --depth=1 https://github.com/Efterklang/sketchybar.git sbar
 mv ~/.config/sketchybar ~/.config/sketchybar.back
-cp -r ./sbar/gnix_theme2 ~/.config/sketchybar
-```
-
-### Window Manager Options
-
-- MacOS Native (default)
-- Aerospace (experimental and buggy😅)
-
-```lua init.Lua
-WINDOW_MANAGER = "macos_native" -- or "aerospace"
+cp -r ./sbar ~/.config/sketchybar
 ```
 
 ## Preview
 
-### Gnix_Theme1 (deprecated)
+Rewrite using Lua, for bash version, see [here](https://github.com/Efterklang/sketchybar/tree/bash)
 
-<img width="3420" height="82" alt="image" src="https://github.com/user-attachments/assets/8b5f1235-0644-4958-a99b-902b68a28b32" />
-
-### Gnix_Theme2
-
-Rewrite using Lua
-
-**items left**:
+### items left
 
 - logo(finder)
 - workspaces/app menus
 - front app
 
-**items right**:
+> [!NOTE] Supported WM
+>
+> - MacOS Native (default)
+> - Aerospace (experimental and buggy😅)
+>
+> ```lua init.Lua
+> WINDOW_MANAGER = "macos_native" -- or "aerospace"
+> ```
+
+### items right
 
 - mpd + mpc (music player deamon+client)
 - mem, cpu, network stats
@@ -40,9 +45,6 @@ Rewrite using Lua
 - volume
 - battery
 - cal & time
-
-<img width="3400" height="1922" alt="image" src="https://github.com/user-attachments/assets/4f293a12-0ee4-44bd-9aad-fe861c4aa2c8" />
-
 
 ## Credits
 
