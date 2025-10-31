@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/4f293a12-0ee4-44bd-9aad-fe861c4aa2c8" width="60%"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/3ed47ad5-d53d-49bf-be21-10570c294325" width="60%"/>
   <br>
   SketchyBar Configuration
   <br>
@@ -23,9 +23,13 @@ Rewrite using Lua, for bash version, see [here](https://github.com/Efterklang/sk
 
 ### items left
 
-- logo(finder)
-- workspaces/app menus
-- front app
+| Item             | Click Script                                                                   |
+| ---------------- | ------------------------------------------------------------------------------ |
+| logo             | same as click at apple icon                                                    |
+| workspaces       | left click → switch to that space<br> right click → open `Mission Control`<br> |
+| app menus        | click → open macOS app menu                                                    |
+| space indicators | swap menus and spaces                                                          |
+| front app        | show app menu[^1]                                                              |
 
 > [!NOTE]
 > Supported WM
@@ -38,16 +42,20 @@ Rewrite using Lua, for bash version, see [here](https://github.com/Efterklang/sk
 
 ### items right
 
-- mpd + mpc (music player deamon+client)
-- mem, cpu, network stats
-- homebrew stats
-- wechat, qq (or any other apps)
-- volume
-- battery
-- cal & time
+| Item                                     | Click Script                                                            |
+| ---------------------------------------- | ----------------------------------------------------------------------- |
+| mpd + mpc (music player daemon + client) | show music controller (play/pause, next, previous, repeat/random, etc.) |
+| hardware stats                           | cpu graph[^2] · memory graph[^3] · network item[^2]                     |
+| toggle stats                             | show/hide hardware stats(cpu, memory, network)                          |
+| homebrew stats                           | show outdated packages                                                  |
+| wechat, qq (or any other apps)           | Open wechat/qq                                                          |
+| volume                                   | show volume slider and output device selector[^2]                       |
+| battery                                  | show remaining time and percentage                                      |
+| cal & time                               | open Calendar.app                                                       |
 
 ## Credits
 
-- [FelixKratz/dotfiles: My personal macOS configuration](https://github.com/FelixKratz/dotfiles)
-- [TheGoldenPatrik1/sketchybar-config: My personal configuration for SketchyBar](https://github.com/TheGoldenPatrik1/sketchybar-config)
-- [binbinsh/sketchybar-config: My sketchybar configuration files.](https://github.com/binbinsh/sketchybar-config)
+[^1]: Credit [Sinjhin/SketchyMenu: A menu plugin et al for FelixKratz/SketchyBar](https://github.com/Sinjhin/SketchyMenu)
+[^2]: Credit [FelixKratz/dotfiles: My personal macOS configuration](https://github.com/FelixKratz/dotfiles)
+[^3]: Credit [TheGoldenPatrik1/sketchybar-config: My personal configuration for SketchyBar](https://github.com/TheGoldenPatrik1/sketchybar-config)
+[^4]: Credit [binbinsh/sketchybar-config: My sketchybar configuration files.](https://github.com/binbinsh/sketchybar-config)
