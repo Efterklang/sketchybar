@@ -42,12 +42,14 @@ PRESET_OPTIONS = {
   gnix = {
     BOREDER_WIDTH = 3,
     HEIGHT = 32,
+    Y_OFFSET = 1,
     MARGIN = 5,
     CORNER_RADIUS = 10,
   },
   compact = {
     BOREDER_WIDTH = 0,
-    HEIGHT = 28,
+    HEIGHT = 27,
+    Y_OFFSET = 0,
     MARGIN = 0,
     CORNER_RADIUS = 0,
   },
@@ -127,7 +129,7 @@ SBAR.bar({
   sticky = true,
   padding_right = PADDINGS,
   padding_left = PADDINGS,
-  y_offset = 1,
+  y_offset = PRESET_OPTIONS[PRESET].Y_OFFSET,
   margin = PRESET_OPTIONS[PRESET].MARGIN,
   notch_width = 200,
 })
