@@ -9,18 +9,18 @@ require("settings")
 SBAR.begin_config()
 
 SBAR.bar({
-    height = 35,
     color = COLORS.base,
-    border_width = 3,
+    height = PRESETS[PICKED_PRESET].HEIGHT,
+    border_width = PRESETS[PICKED_PRESET].BOREDER_WIDTH,
     border_color = COLORS.surface0,
-    corner_radius = 10,
+    corner_radius = PRESETS[PICKED_PRESET].CORNER_RADIUS,
     blur_radius = 15,
     shadow = { drawing = true },
     sticky = true,
     padding_right = PADDINGS,
     padding_left = PADDINGS,
     y_offset = 1,
-    margin = 5,
+    margin = PRESETS[PICKED_PRESET].MARGIN,
     notch_width = 200,
 })
 
