@@ -43,11 +43,12 @@ Rewrite using Lua, for bash version, see [here](https://github.com/Efterklang/sk
 | Item                                     | Click Script                                                            |
 | ---------------------------------------- | ----------------------------------------------------------------------- |
 | mpd + mpc (music player daemon + client) | show music controller (play/pause, next, previous, repeat/random, etc.) |
-| hardware stats                           | cpu graph[^2] · memory graph[^3] · network item[^2]                     |
-| toggle stats                             | show/hide hardware stats(cpu, memory, network)                          |
+| hardware stats                           | cpu graph[^2] · memory graph[^3] · netspeed item[^2]                    |
+| toggle stats                             | show/hide hardware stats(cpu, memory, netspeed)                         |
 | homebrew stats                           | show outdated packages                                                  |
 | wechat, qq (or any other apps)           | Open wechat/qq                                                          |
 | volume                                   | show volume slider and output device selector[^2]                       |
+| wifi                                     | show wifi networks and vpn status                                       |
 | battery                                  | show remaining time and percentage                                      |
 | cal & time                               | open Calendar.app                                                       |
 

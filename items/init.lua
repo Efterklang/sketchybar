@@ -6,13 +6,14 @@ require("items.front_app.front_app")
 -- right
 require("items.calendar.calendar")
 require("items.battery.battery")
+require("items.monitor.wifi")
 require("items.volume.volume")
 require("items.chat.qq_wechat")
 require("items.brew.brew")
 
 require("items.toggle_stats.toggle_stats")
 
-require("items.monitor.wifi")
+require("items.monitor.netspeed")
 require("items.monitor.cpu")
 require("items.monitor.mem")
 require("items.music.music")

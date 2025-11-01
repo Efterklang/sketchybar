@@ -9,7 +9,7 @@ local ram = SBAR.add("graph", "widgets.ram", 42, {
     },
     icon = { string = ICONS.ram, color = COLORS.red },
     label = {
-        string = "MEM ??%",
+        string = "RAM ??%",
         font = {
             family = FONT.nerd_font,
             style = FONT.style_map["Bold"],
@@ -22,7 +22,7 @@ local ram = SBAR.add("graph", "widgets.ram", 42, {
     },
     update_freq = 3,
     updates = "when_shown",
-    padding_right = PADDINGS + 6
+    padding_right = PADDINGS
 })
 
 ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
@@ -42,7 +42,7 @@ ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
         end
         ram:set({
             graph = { color = color },
-            label = { string = "MEM " .. load .. "%" }
+            label = { string = "RAM " .. load .. "%" }
         })
     end)
 end)
