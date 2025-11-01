@@ -36,7 +36,7 @@ FONT = {
   },
 }
 
-PRESET = "Gnix"
+PRESET = "gnix"
 PRESET_OPTIONS = {
   -- my personal configurations
   gnix = {
