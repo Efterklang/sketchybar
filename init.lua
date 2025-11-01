@@ -83,7 +83,7 @@ SBAR.bar({
     padding_right = PADDINGS,
     padding_left = PADDINGS,
     y_offset = 1,
-    margin = PRESETS[PICKED_PRESET].MARGIN,
+    margin = PRESET_OPTIONS[PRESET].MARGIN,
     notch_width = 200,
 })
 
