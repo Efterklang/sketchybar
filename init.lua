@@ -48,7 +48,7 @@ PADDINGS = 3
 GROUP_PADDINGS = 5
 
 -- Load user settings if they exist
-local settings_file = os.getenv("HOME") .. "/.config/sketchybar/settings.lua"
+local settings_file = "settings.lua"
 local f = io.open(settings_file, "r")
 if f ~= nil then
     io.close(f)
