@@ -1,4 +1,22 @@
 -- #region Default configuration variables
+MODULES = {
+    logo = true,
+    menus = true,
+    spaces = true,
+    front_app = true,
+    calendar = true,
+    battery = true,
+    wifi = true,
+    volume = true,
+    chat = true,
+    brew = true,
+    toggle_stats = true,
+    netspeed = true,
+    cpu = true,
+    mem = true,
+    music = true,
+}
+
 FONT = {
     nerd_font = "Maple Mono NF CN",
     numbers = "Maple Mono NF CN",
@@ -10,7 +28,6 @@ FONT = {
     },
 }
 
--- Default Preset
 PRESET = "Gnix"
 PRESET_OPTIONS = {
     -- my personal configurations
