@@ -1,9 +1,9 @@
 local client
 
-if MEDIA_CONTROLLER == "media-control" then
+if MUSIC.CONTROLLER == "media-control" then
     LOG.log("Using media-control as music controller")
     client = require("items.music.controller.media-control")
-elseif MEDIA_CONTROLLER == "mpc" then
+elseif MUSIC.CONTROLLER == "mpc" then
     LOG.log("Using mpc as music controller")
     client = require("items.music.controller.mpc")
 else
@@ -35,7 +35,7 @@ local music_anchor = SBAR.add("item", "music.anchor", {
             style = FONT.style_map["Bold"],
             size = 14.0,
         },
-        max_chars = MUSIC_TITLE_MAX_CHARS,
+        max_chars = MUSIC.TITLE_MAX_CHARS,
         padding_left = PADDINGS,
         y_offset = 2,
         color = COLORS.lavender,
@@ -68,29 +68,30 @@ local track_title = SBAR.add("item", "music.title", {
         font = {
             family = MUSIC_FONT,
             style = FONT.style_map["Bold"],
-            size = 15.0,
+            size = 20.0,
         },
-        max_chars = MUSIC_TITLE_MAX_CHARS,
+        max_chars = MUSIC.TITLE_MAX_CHARS,
         color = COLORS.mauve,
     },
-    y_offset = 50 + Y_OFFSET,
+    y_offset = 80 + Y_OFFSET,
 })
 
 local track_artist = SBAR.add("item", "music.artist", {
     position = "popup." .. music_anchor.name,
     icon = { drawing = false },
-    y_offset = 30 + Y_OFFSET,
+    y_offset = 50 + Y_OFFSET,
     padding_left = 0,
     padding_right = 0,
     width = 0,
+    align = "center",
     label = {
         font = {
             family = MUSIC_FONT,
             style = FONT.style_map["Bold"],
-            size = 14.0,
+            size = 15.0,
         },
         max_chars = 20,
-        color = COLORS.lavender,
+        color = COLORS.blue,
     }
 })
 
@@ -99,21 +100,21 @@ local track_album = SBAR.add("item", "music.album", {
     icon = { drawing = false },
     padding_left = 0,
     padding_right = 0,
-    y_offset = 15 + Y_OFFSET,
+    y_offset = 25 + Y_OFFSET,
     width = 0,
     label = {
         font = {
             family = MUSIC_FONT,
             style = FONT.style_map["Regular"],
-            size = 14.0,
+            size = 15.0,
         },
         max_chars = 20,
-        color = COLORS.subtext1,
+        color = COLORS.lavender,
     }
 })
 
 -- #region Playback Controls
-local CONTROLS_Y_OFFSET = -30 + Y_OFFSET
+local CONTROLS_Y_OFFSET = -55 + Y_OFFSET
 
 local music_shuffle = SBAR.add("item", "music.shuffle", {
     position = "popup." .. music_anchor.name,
@@ -213,8 +214,8 @@ local track_info_updater = function(title, artist, album)
     music_anchor:set({ label = title })
     track_title:set({ label = title })
     -- 检查是否为空字符串或nil
-    local display_artist = (artist and artist ~= "") and artist or MUSIC_DEFAULT_ARTIST
-    local display_album = (album and album ~= "") and album or MUSIC_DEFAULT_ALBUM
+    local display_artist = (artist and artist ~= "") and artist or MUSIC.DEFAULT_ARTIST
+    local display_album = (album and album ~= "") and album or MUSIC.DEFAULT_ALBUM
 
     track_artist:set({ label = display_artist })
     track_album:set({ label = display_album })
@@ -309,6 +310,3 @@ music_next:subscribe("mouse.clicked", function()
     end)
 end)
 -- #endregion Event
-
-
-client.update_album_art(albumart_updater)

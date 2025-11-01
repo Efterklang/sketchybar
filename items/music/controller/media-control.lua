@@ -42,7 +42,7 @@ end
 
 function media_control.update_album_art(callback)
     -- 使用 media-control get 获取封面数据并保存到文件
-    local size = ALBUM_ART_SIZE
+    local size = MUSIC.ALBUM_ART_SIZE
     local cmd = string.format(
         'media-control get | jq -r ".artworkData" | base64 -d > /tmp/music_cover.jpg 2>/dev/null && sips -z %d %d /tmp/music_cover.jpg',
         size, size

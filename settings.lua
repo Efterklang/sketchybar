@@ -25,7 +25,7 @@ PRESETS = {
         HEIGHT = 28,
         MARGIN = 0,
         CORNER_RADIUS = 0,
-    }
+    },
 }
 
 -- options: "macos_native", "aerospace"(experimental)
@@ -34,14 +34,21 @@ WINDOW_MANAGER = "macos_native"
 SPACE_LABEL = "greek_uppercase"
 
 -- options: "mpc", "media-control"(todo)
-MEDIA_CONTROLLER = "media-control"
-ALBUM_ART_SIZE = 1280
-MUSIC_TITLE_MAX_CHARS = 10
-MUSIC_DEFAULT_ARTIST = "Various Artists"
-MUSIC_DEFAULT_ALBUM = "No Album"
+MUSIC = {
+    CONTROLLER = "media-control",
+    ALBUM_ART_SIZE = 1280,
+    TITLE_MAX_CHARS = 15,
+    DEFAULT_ARTIST = "Various Artists",
+    DEFAULT_ALBUM = "No Album",
+    POPUP_WIDTH = 80,
+    POPUP_ITEMS = {
+        shuffle = false,
+        repeating = false,
+    },
+}
 
 WIFI = {
-    PROXY_APP = "FlClash"
+    PROXY_APP = "FlClash",
 }
 
 PADDINGS = 3
