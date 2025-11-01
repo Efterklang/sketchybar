@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="image" src="https://github.com/user-attachments/assets/3ed47ad5-d53d-49bf-be21-10570c294325" width="60%"/>
+  <img alt="image" src="https://github.com/user-attachments/assets/155b11de-e5e9-4610-9304-be441bb1615e" width="60%"/>
   <br>
   SketchyBar Configuration
   <br>
