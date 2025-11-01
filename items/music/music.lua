@@ -50,12 +50,10 @@ local albumart = SBAR.add("item", "music.cover", {
     position = "popup." .. music_anchor.name,
     label = { drawing = false },
     icon = { drawing = false },
-    padding_left = 12,
     padding_right = 10,
     background = {
         image = {
             string = "/tmp/music_cover.jpg",
-            scale = 0.85,
         }
     }
 })
