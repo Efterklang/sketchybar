@@ -26,7 +26,8 @@ PRESETS = {
         CORNER_RADIUS = 0,
     }
 }
--- options: "macos_native", "aerospace"(experimental) WINDOW_MANAGER = "macos_native"
+-- options: "macos_native", "aerospace"(experimental)
+WINDOW_MANAGER = "macos_native"
 -- options: "greek_uppercase", "greek_lowercase", nil(use space name/number as label)
 SPACE_LABEL = "greek_uppercase"
 -- options: "mpc", "media-control"(todo)
