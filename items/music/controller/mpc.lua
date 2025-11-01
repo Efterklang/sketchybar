@@ -21,6 +21,7 @@ end
 function MPC.toggle_repeat()
     SBAR.exec("mpc repeat")
 end
+
 -- #endregion Control Functions
 
 -- #region Info Updaters
@@ -46,11 +47,16 @@ function MPC.update_current_track(callback)
 end
 
 function MPC.update_album_art(callback)
-    local cmd = 'mpc readpicture \"$(mpc current -f %file%)\" > /tmp/music_cover.jpg'
+    local size = ALBUM_ART_SIZE
+    local cmd = string.format(
+        'mpc readpicture "$(mpc current -f %%file%%)" > /tmp/music_cover.jpg && sips -z %d %d /tmp/music_cover.jpg',
+        size, size
+    )
     SBAR.exec(cmd, function()
         callback("/tmp/music_cover.jpg")
     end)
 end
+
 -- #endregion Info Updaters
 
 return MPC
