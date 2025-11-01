@@ -29,12 +29,14 @@ specific options.
 ```lua
 -- settings.lua
 WINDOW_MANAGER = "aerospace"
-PRESET = "Compact"
+PRESET = "compact"
 
 -- disable some modules
-MODULES.cpu = false
-MODULES.mem = false
-MODULES.music = false
+MODULES = {
+  chat = false,
+  logo = false,
+  brew = false,
+}
 ```
 
 ---
@@ -44,8 +46,8 @@ MODULES.music = false
 | Option                  | Description                                          | Default Value                           | Options                                     |
 | ----------------------- | ---------------------------------------------------- | --------------------------------------- | ------------------------------------------- |
 | `FONT`                  | Font configuration                                   | `Maple Mono NF CN`                      |                                             |
-| `PRESET`                | The default preset to use                            | `Gnix`                                  | `Gnix`, `Compact`                           |
-| `PRESET_OPTIONS`        | A table of presets                                   | `{ Gnix = { ... }, Compact = { ... } }` |                                             |
+| `PRESET`                | The default preset to use                            | `gnix`                                  | `gnix`, `compact`                           |
+| `PRESET_OPTIONS`        | A table of presets                                   | `{ gnix = { ... }, compact = { ... } }` |                                             |
 | `WINDOW_MANAGER`        | The window manager to use                            | `macos_native`                          | `macos_native`, `aerospace`                 |
 | `SPACE_LABEL`           | The label to use for spaces                          | `greek_uppercase`                       | `greek_uppercase`, `greek_lowercase`, `nil` |
 | `MUSIC.CONTROLLER`      | The media controller to use                          | `media-control`                         | `media-control`, `mpc`                      |
@@ -112,5 +114,4 @@ version, see [here](https://github.com/Efterklang/sketchybar/tree/bash).
 [^3]: Credit
     [TheGoldenPatrik1/sketchybar-config: My personal configuration for SketchyBar](https://github.com/TheGoldenPatrik1/sketchybar-config)
 
-[^4]: Credit
     [binbinsh/sketchybar-config: My sketchybar configuration files.](https://github.com/binbinsh/sketchybar-config)
