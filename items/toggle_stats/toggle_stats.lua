@@ -8,7 +8,6 @@ local stats_items = {
     "widgets.cpu",
     "widgets.wifi1",
     "widgets.wifi2",
-    "widgets.wifi.padding",
     "widgets.ram",
 }
 
@@ -16,16 +15,12 @@ local stats_items = {
 local separator = SBAR.add("item", "separator_right", {
     position = "right",
     icon = {
-        string = "",
-        font = {
-            style = FONT.style_map["Regular"],
-            size = 16.0,
-        },
+        string = ICONS.stats_toggle.show,
         color = COLORS.lavender,
     },
     label = { drawing = false },
     background = {
-        padding_left = 10,
+        padding_left = PADDINGS,
         padding_right = 10,
     },
 })
@@ -42,7 +37,7 @@ local function hide_stats()
     for _, item_name in ipairs(stats_items) do
         SBAR.set(item_name, { drawing = false })
     end
-    separator:set({ icon = { string = "" } })
+    separator:set({ icon = { string = ICONS.stats_toggle.hide } })
 end
 
 -- 显示 stats
@@ -50,14 +45,14 @@ local function show_stats()
     for _, item_name in ipairs(stats_items) do
         SBAR.set(item_name, { drawing = true })
     end
-    separator:set({ icon = { string = "" } })
+    separator:set({ icon = { string = ICONS.stats_toggle.show } })
 end
 
 -- 切换 stats
 local function toggle_stats()
     local current_icon = separator:query().icon.value
 
-    if current_icon == "" then
+    if current_icon == ICONS.stats_toggle.hide then
         show_stats()
     else
         hide_stats()
