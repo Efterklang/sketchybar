@@ -8,7 +8,6 @@ local battery = SBAR.add("item", "battery", {
   },
   label = { drawing = false },
   update_freq = 180,
-  popup = { align = "center" }
 })
 
 battery:subscribe({ "routine", "power_source_change", "system_woke" }, function()

@@ -42,7 +42,6 @@ local music_anchor = SBAR.add("item", "music.anchor", {
     },
     popup = {
         horizontal = true,
-        align = "center",
         height = POPUP_HEIGHT,
     }
 })

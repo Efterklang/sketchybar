@@ -74,6 +74,7 @@ SBAR.default({
             shadow = { drawing = true },
         },
         blur_radius = 50,
+        align = "center",
     },
     scroll_texts = true,
 })
