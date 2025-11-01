@@ -35,6 +35,7 @@ local music_anchor = SBAR.add("item", "music.anchor", {
             style = FONT.style_map["Bold"],
             size = 14.0,
         },
+        max_chars = MUSIC_TITLE_MAX_CHARS,
         padding_left = PADDINGS,
         y_offset = 2,
         color = COLORS.lavender,
@@ -72,7 +73,7 @@ local track_title = SBAR.add("item", "music.title", {
             style = FONT.style_map["Bold"],
             size = 15.0,
         },
-        max_chars = 20,
+        max_chars = MUSIC_TITLE_MAX_CHARS,
         color = COLORS.mauve,
     },
     y_offset = 50 + Y_OFFSET,
@@ -214,8 +215,12 @@ SBAR.add("bracket", "music.controls", {
 local track_info_updater = function(title, artist, album)
     music_anchor:set({ label = title })
     track_title:set({ label = title })
-    track_artist:set({ label = artist })
-    track_album:set({ label = album })
+    -- 检查是否为空字符串或nil
+    local display_artist = (artist and artist ~= "") and artist or MUSIC_DEFAULT_ARTIST
+    local display_album = (album and album ~= "") and album or MUSIC_DEFAULT_ALBUM
+
+    track_artist:set({ label = display_artist })
+    track_album:set({ label = display_album })
 end
 
 local albumart_updater = function()

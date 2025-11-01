@@ -32,5 +32,8 @@ SPACE_LABEL = "greek_uppercase"
 -- options: "mpc", "media-control"(todo)
 MEDIA_CONTROLLER = "media-control"
 ALBUM_ART_SIZE = 1280
+MUSIC_TITLE_MAX_CHARS = 10
+MUSIC_DEFAULT_ARTIST = "Various Artists"
+MUSIC_DEFAULT_ALBUM = "No Album"
 PADDINGS = 3
 GROUP_PADDINGS = 5
