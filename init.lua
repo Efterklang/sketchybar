@@ -32,6 +32,7 @@ PRESET_OPTIONS = {
 WINDOW_MANAGER = "macos_native"
 -- options: "greek_uppercase", "greek_lowercase", nil(use space name/number as label)
 SPACE_LABEL = "greek_uppercase"
+SPACE_ITEM_PADDING = 12
 
 -- options: "mpc", "media-control"(todo)
 MUSIC = {
