@@ -24,7 +24,7 @@ local cpu = SBAR.add("graph", "widgets.cpu", 42, {
     width = 0,
     y_offset = 4,
   },
-  padding_right = PADDINGS + 10,
+  padding_left = 2,
 })
 
 cpu:subscribe("cpu_update", function(env)

@@ -2,7 +2,7 @@ local popup_width = 150
 
 local volume_icon = SBAR.add("item", "widgets.volume", {
   position = "right",
-  padding_right = -1,
+  padding_left = 2,
   icon = {
     string = ICONS.volume._100,
     width = 0,

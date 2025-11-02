@@ -22,7 +22,7 @@ local ram = SBAR.add("graph", "widgets.ram", 42, {
   },
   update_freq = 3,
   updates = "when_shown",
-  padding_right = PADDINGS,
+  padding_left = 2,
 })
 
 ram:subscribe({ "routine", "forced", "system_woke" }, function(env)

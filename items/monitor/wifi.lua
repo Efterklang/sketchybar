@@ -1,25 +1,83 @@
-local wifi = SBAR.add("item", "wifi", {
+-- Execute the event provider binary which provides the event "network_update"
+-- for the network interface "en0", which is fired every 2.0 seconds.
+SBAR.exec(
+  "killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0"
+)
+
+local netspeed_upload = SBAR.add("item", "netspeed_upload", {
   position = "right",
-  label = { drawing = false },
+  padding_left = 2,
+  width = 0,
+  icon = {
+    padding_right = 0,
+    font = {
+      style = FONT.style_map["Bold"],
+      size = 9.0,
+    },
+    string = ICONS.wifi.upload,
+  },
+  label = {
+    font = {
+      family = FONT.numbers,
+      style = FONT.style_map["Bold"],
+      size = 9.0,
+    },
+    color = COLORS.red,
+    string = "??? Bps",
+  },
+  y_offset = 4,
+  popup = {
+    align = "right",
+  },
 })
 
-wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
-  SBAR.exec("ipconfig getifaddr en0", function(ip)
-    local connected = not (ip == "")
-    wifi:set({
-      icon = {
-        string = connected and ICONS.wifi.connected or ICONS.wifi.disconnected,
-        color = connected and COLORS.flamingo or COLORS.red,
-      },
-    })
-  end)
+local netspeed_download = SBAR.add("item", "netspeed_download", {
+  position = "right",
+  padding_left = 2,
+  icon = {
+    padding_right = 0,
+    font = {
+      style = FONT.style_map["Bold"],
+      size = 9.0,
+    },
+    string = ICONS.wifi.download,
+  },
+  label = {
+    font = {
+      family = FONT.numbers,
+      style = FONT.style_map["Bold"],
+      size = 9.0,
+    },
+    color = COLORS.blue,
+    string = "??? Bps",
+  },
+  y_offset = -4,
+})
+
+netspeed_upload:subscribe("network_update", function(env)
+  local up_color = (env.upload == "000 Bps") and COLORS.grey or COLORS.red
+  local down_color = (env.download == "000 Bps") and COLORS.grey or COLORS.blue
+  netspeed_upload:set({
+    icon = { color = up_color },
+    label = {
+      string = env.upload,
+      color = up_color,
+    },
+  })
+  netspeed_download:set({
+    icon = { color = down_color },
+    label = {
+      string = env.download,
+      color = down_color,
+    },
+  })
 end)
 
 -- #region Popup
 local popup_width = 250
 
 local ssid = SBAR.add("item", {
-  position = "popup." .. wifi.name,
+  position = "popup." .. netspeed_upload.name,
   icon = {
     font = {
       style = FONT.style_map["Bold"],
@@ -44,7 +102,7 @@ local ssid = SBAR.add("item", {
 })
 
 local hostname = SBAR.add("item", {
-  position = "popup." .. wifi.name,
+  position = "popup." .. netspeed_upload.name,
   icon = {
     align = "left",
     string = "Hostname:",
@@ -59,7 +117,7 @@ local hostname = SBAR.add("item", {
 })
 
 local ip = SBAR.add("item", {
-  position = "popup." .. wifi.name,
+  position = "popup." .. netspeed_upload.name,
   icon = {
     align = "left",
     string = "IP:",
@@ -73,7 +131,7 @@ local ip = SBAR.add("item", {
 })
 
 local mask = SBAR.add("item", {
-  position = "popup." .. wifi.name,
+  position = "popup." .. netspeed_upload.name,
   icon = {
     align = "left",
     string = "Subnet mask:",
@@ -87,7 +145,7 @@ local mask = SBAR.add("item", {
 })
 
 local router = SBAR.add("item", {
-  position = "popup." .. wifi.name,
+  position = "popup." .. netspeed_upload.name,
   icon = {
     align = "left",
     string = "Router:",
@@ -101,7 +159,7 @@ local router = SBAR.add("item", {
 })
 
 local vpn = SBAR.add("item", {
-  position = "popup." .. wifi.name,
+  position = "popup." .. netspeed_upload.name,
   icon = {
     align = "left",
     string = "VPN:",
@@ -117,13 +175,13 @@ local vpn = SBAR.add("item", {
 
 -- #endregion Popup
 local function hide_details()
-  wifi:set({ popup = { drawing = false } })
+  netspeed_upload:set({ popup = { drawing = false } })
 end
 
 local function toggle_details()
-  local should_draw = wifi:query().popup.drawing == "off"
+  local should_draw = netspeed_upload:query().popup.drawing == "off"
   if should_draw then
-    wifi:set({ popup = { drawing = true } })
+    netspeed_upload:set({ popup = { drawing = true } })
     SBAR.exec(
       "networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'",
       function(result)
@@ -151,8 +209,10 @@ local function toggle_details()
   end
 end
 
-wifi:subscribe("mouse.clicked", toggle_details)
-wifi:subscribe("mouse.exited.global", hide_details)
+netspeed_upload:subscribe("mouse.clicked", toggle_details)
+netspeed_download:subscribe("mouse.clicked", toggle_details)
+netspeed_upload:subscribe("mouse.exited.global", hide_details)
+netspeed_download:subscribe("mouse.exited.global", hide_details)
 
 local function copy_label_to_clipboard(env)
   local label = SBAR.query(env.NAME).label.value

@@ -42,9 +42,6 @@ end
 if is_enabled("toggle_stats") then
   safe_require("items.toggle_stats.toggle_stats")
 end
-if is_enabled("netspeed") then
-  safe_require("items.monitor.netspeed")
-end
 if is_enabled("cpu") then
   safe_require("items.monitor.cpu")
 end

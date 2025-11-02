@@ -2,7 +2,7 @@ SBAR.exec("sketchybar --add event brew_update")
 
 local brew = SBAR.add("item", "brew", {
   position = "right",
-  icon = {
+  padding_left = 2,  icon = {
     string = ICONS.brew,
     color = COLORS.text,
   },
