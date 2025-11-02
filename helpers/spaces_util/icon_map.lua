@@ -1,1 +1,0 @@
-/nix/store/v1aylgj7c0aqs3y5nyj6lr3vdkqymkyi-home-manager-files/.config/sketchybar/helpers/spaces_util/icon_map.lua
