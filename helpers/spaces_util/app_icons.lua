@@ -128,7 +128,7 @@ return setmetatable({
   ["Preview"] = ":pdf:",
   ["Skim"] = ":pdf:",
   ["zathura"] = ":pdf:",
-  ["sioyek"] = ":pdf:"
+  ["sioyek"] = ":pdf:",
 }, {
   __index = app_icons,
 })

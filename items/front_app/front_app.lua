@@ -7,11 +7,11 @@ local front_app = SBAR.add("item", "front_app", {
     font = {
       family = FONT.nerd_font,
       style = FONT.style_map["Bold"],
-      size = 14.0
+      size = 14.0,
     },
   },
   updates = true,
-  click_script = helpers_path .. "sketchymenu/app_menu.sh toggle"
+  click_script = helpers_path .. "sketchymenu/app_menu.sh toggle",
 })
 
 front_app:subscribe("front_app_switched", function(env)

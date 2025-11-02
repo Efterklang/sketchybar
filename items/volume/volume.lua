@@ -39,7 +39,7 @@ local volume_slider = SBAR.add("slider", popup_width, {
     },
   },
   background = { color = COLORS.base, height = 2, y_offset = -20 },
-  click_script = 'osascript -e "set volume output volume $PERCENTAGE"'
+  click_script = 'osascript -e "set volume output volume $PERCENTAGE"',
 })
 
 volume_icon:subscribe("volume_change", function(env)
@@ -61,9 +61,11 @@ end)
 
 local function volume_collapse_details()
   local drawing = volume_icon:query().popup.drawing == "on"
-  if not drawing then return end
+  if not drawing then
+    return
+  end
   volume_icon:set({ popup = { drawing = false } })
-  SBAR.remove('/volume.device\\.*/')
+  SBAR.remove("/volume.device\\.*/")
 end
 
 local current_audio_device = "None"
@@ -82,7 +84,7 @@ local function volume_toggle_details(env)
         current = current_audio_device
         local counter = 0
 
-        for device in string.gmatch(available, '[^\r\n]+') do
+        for device in string.gmatch(available, "[^\r\n]+") do
           local color = COLORS.grey
           if current == device then
             color = COLORS.text
@@ -92,11 +94,12 @@ local function volume_toggle_details(env)
             width = popup_width,
             align = "center",
             label = { string = device, color = color },
-            click_script = 'SwitchAudioSource -s "' ..
-                device ..
-                '" && sketchybar --set /volume.device\\.*/ label.color=' ..
-                COLORS.grey .. ' --set $NAME label.color=' .. COLORS.text
-
+            click_script = 'SwitchAudioSource -s "'
+              .. device
+              .. '" && sketchybar --set /volume.device\\.*/ label.color='
+              .. COLORS.grey
+              .. " --set $NAME label.color="
+              .. COLORS.text,
           })
           counter = counter + 1
         end
@@ -109,7 +112,9 @@ end
 
 local function volume_scroll(env)
   local delta = env.INFO.delta
-  if not (env.INFO.modifier == "ctrl") then delta = delta * 10.0 end
+  if not (env.INFO.modifier == "ctrl") then
+    delta = delta * 10.0
+  end
 
   SBAR.exec('osascript -e "set volume output volume (output volume of (get volume settings) + ' .. delta .. ')"')
 end

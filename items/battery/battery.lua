@@ -4,7 +4,7 @@ local battery = SBAR.add("item", "battery", {
     font = {
       style = FONT.style_map["Regular"],
       size = 19.0,
-    }
+    },
   },
   label = { drawing = false },
   update_freq = 180,
@@ -43,7 +43,7 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
     battery:set({
       icon = {
         string = icon,
-        color = color
+        color = color,
       },
     })
   end)
@@ -56,12 +56,12 @@ local battery_percent = SBAR.add("item", {
   icon = {
     string = "Percentage:",
     width = 100,
-    align = "left"
+    align = "left",
   },
   label = {
     string = "??%",
     width = 100,
-    align = "right"
+    align = "right",
   },
 })
 
@@ -70,12 +70,12 @@ local remaining_time = SBAR.add("item", {
   icon = {
     string = "Time remaining:",
     width = 100,
-    align = "left"
+    align = "left",
   },
   label = {
     string = "??:??h",
     width = 100,
-    align = "right"
+    align = "right",
   },
 })
 
