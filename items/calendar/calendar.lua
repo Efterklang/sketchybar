@@ -8,10 +8,10 @@ local cal_date = SBAR.add("item", {
   label = {
     color = COLORS.lavender,
     font = {
-      size = 13.0
-    }
+      size = 13.0,
+    },
   },
-  y_offset = 6
+  y_offset = 6,
 })
 
 local cal_time = SBAR.add("item", {
@@ -20,15 +20,15 @@ local cal_time = SBAR.add("item", {
   label = {
     color = COLORS.lavender,
     font = {
-      size = 12.0
-    }
+      size = 12.0,
+    },
   },
-  y_offset = -6
+  y_offset = -6,
 })
 
 -- Double border for calendar using a single item bracket
 local cal_bracket = SBAR.add("bracket", { cal_date.name, cal_time.name }, {
-  update_freq = 1
+  update_freq = 1,
 })
 
 -- Padding item required because of bracket

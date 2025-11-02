@@ -1,7 +1,8 @@
 -- Execute the event provider binary which provides the event "network_update"
 -- for the network interface "en0", which is fired every 2.0 seconds.
 SBAR.exec(
-  "killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0")
+  "killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0"
+)
 
 local upload_speed = SBAR.add("item", "widgets.wifi1", {
   position = "right",
@@ -57,14 +58,14 @@ upload_speed:subscribe("network_update", function(env)
     icon = { color = up_color },
     label = {
       string = env.upload,
-      color = up_color
-    }
+      color = up_color,
+    },
   })
   download_speed:set({
     icon = { color = down_color },
     label = {
       string = env.download,
-      color = down_color
-    }
+      color = down_color,
+    },
   })
 end)
