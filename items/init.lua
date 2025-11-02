@@ -56,7 +56,7 @@ if is_enabled("music") then
 end
 
 -- 🧱 Optional bracket (no border if battery text style)
-if is_enabled("battery") or is_enabled("brew") then
+if is_enabled("battery") and is_enabled("brew") then
   local border_width = 2
   if MODULES.battery and MODULES.battery.style == "text" then
     border_width = 0
