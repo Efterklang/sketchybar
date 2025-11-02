@@ -11,7 +11,7 @@
 
 ## Install
 
-```bash
+```sh
 curl -fsSL https://raw.githubusercontent.com/Efterklang/sketchybar/main/install.sh | sh -s
 ```
 
@@ -19,46 +19,86 @@ curl -fsSL https://raw.githubusercontent.com/Efterklang/sketchybar/main/install.
 
 ## Configuration
 
-The default configuration is located in **`init.lua`**. To override defaults or
-toggle modules, create a **`settings.lua`** file in the same directory. It will
-be loaded automatically after the defaults, allowing you to override or disable
-specific options.
+The default configuration is located in **`init.lua`**. To override or disable
+specific options, create a **`settings.lua`** file in the same directory. It
+will be automatically loaded _after_ the defaults and merged.
 
-### Example override
+<details><summary>Every configuration with their default value:
+</summary>
+
+<!-- config:start -->
 
 ```lua
--- settings.lua
-WINDOW_MANAGER = "aerospace"
-PRESET = "compact"
+return {
+  WINDOW_MANAGER = "macos_native", -- or "aerospace"
+  PRESET = "gnix", -- or "compact"
 
--- disable some modules
-MODULES = {
-  chat = false,
-  logo = false,
-  brew = false,
+  FONT = {
+    nerd_font = "Maple Mono NF CN",
+    numbers = "Maple Mono NF CN",
+    style_map = {
+      Regular = "Regular",
+      Semibold = "Medium",
+      Bold = "Bold",
+      Black = "ExtraBold",
+    },
+  },
+
+  PADDINGS = 3,
+  GROUP_PADDINGS = 5,
+  SPACE_LABEL = "greek_uppercase",
+
+  MODULES = {
+    logo = { enable = true },
+    menus = { enable = true },
+    spaces = { enable = true },
+    front_app = { enable = true },
+    calendar = { enable = true },
+    wifi = { enable = true },
+    volume = { enable = true },
+    chat = { enable = true },
+    brew = { enable = true },
+    toggle_stats = { enable = true },
+    netspeed = { enable = true },
+    cpu = { enable = true },
+    mem = { enable = true },
+    music = { enable = true },
+    battery = {
+      enable = true,
+      style = "icon", -- "icon" or "text"
+    },
+  },
 }
 ```
 
----
+> 💡 When `battery.style = "text"`, the border/bracket around battery items is
+> disabled automatically.
 
-### All Configuration Options
+<!-- config:end -->
+</details>
 
-| Option                  | Description                                          | Default Value                           | Options                                     |
-| ----------------------- | ---------------------------------------------------- | --------------------------------------- | ------------------------------------------- |
-| `FONT`                  | Font configuration                                   | `Maple Mono NF CN`                      |                                             |
-| `PRESET`                | The default preset to use                            | `gnix`                                  | `gnix`, `compact`                           |
-| `PRESET_OPTIONS`        | A table of presets                                   | `{ gnix = { ... }, compact = { ... } }` |                                             |
-| `WINDOW_MANAGER`        | The window manager to use                            | `macos_native`                          | `macos_native`, `aerospace`                 |
-| `SPACE_LABEL`           | The label to use for spaces                          | `greek_uppercase`                       | `greek_uppercase`, `greek_lowercase`, `nil` |
-| `MUSIC.CONTROLLER`      | The media controller to use                          | `media-control`                         | `media-control`, `mpc`                      |
-| `MUSIC.ALBUM_ART_SIZE`  | The size of the album art                            | `1280`                                  |                                             |
-| `MUSIC.TITLE_MAX_CHARS` | The maximum number of characters for the music title | `15`                                    |                                             |
-| `MUSIC.DEFAULT_ARTIST`  | The default artist when no artist is found           | `Various Artists`                       |                                             |
-| `MUSIC.DEFAULT_ALBUM`   | The default album when none is found                 | `No Album`                              |                                             |
-| `WIFI.PROXY_APP`        | Proxy app used for network control                   | `FlClash`                               |                                             |
-| `PADDINGS`              | Padding for items                                    | `3`                                     |                                             |
-| `GROUP_PADDINGS`        | Padding for groups                                   | `5`                                     |                                             |
-| `MODULES`               | Enable or disable each module                        | `{ logo=true, cpu=true, ... }`          | `true` / `false`                            |
+### Example
+
+To change defaults, create `~/.config/sketchybar/settings.lua`:
+
+```lua
+-- example settings.lua
+return {
+  WINDOW_MANAGER = "aerospace",
+  PRESET = "compact",
+  MODULES = {
+    logo = { enable = false },
+    chat = { enable = false },
+    brew = { enable = false },
+    battery = {
+      style = "text",
+    },
+  },
+}
+```
+
+That’s it — no need to modify `init.lua`. Your custom settings will be merged on
+load.
 
 ---
 
