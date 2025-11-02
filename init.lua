@@ -14,7 +14,7 @@ local defaults = {
     },
     compact = {
       BOREDER_WIDTH = 0,
-      HEIGHT = 27,
+      HEIGHT = 26,
       Y_OFFSET = 0,
       MARGIN = 0,
       CORNER_RADIUS = 0,
@@ -51,7 +51,7 @@ local defaults = {
   },
 
   SPACE_LABEL = "greek_uppercase",
-  SPACE_ITEM_PADDING = 12,
+  SPACE_ITEM_PADDING = 10,
 
   MUSIC = {
     CONTROLLER = "media-control",
@@ -167,15 +167,15 @@ SBAR.default({
     shadow = { drawing = true, distance = 2, color = COLORS.crust },
   },
   background = {
-    height = 28,
+    height = 24,
     corner_radius = 9,
-    border_width = 2,
+    border_width = 1,
     border_color = COLORS.surface1,
     image = { corner_radius = 9, border_color = COLORS.grey, border_width = 1 },
   },
   popup = {
     background = {
-      border_width = 2,
+      border_width = 1,
       corner_radius = 9,
       border_color = COLORS.surface0,
       color = COLORS.base,

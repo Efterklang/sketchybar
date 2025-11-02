@@ -59,7 +59,6 @@ return {
     chat = { enable = true },
     brew = { enable = true },
     toggle_stats = { enable = true },
-    netspeed = { enable = true },
     cpu = { enable = true },
     mem = { enable = true },
     music = { enable = true },
