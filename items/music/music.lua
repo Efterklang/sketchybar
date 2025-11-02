@@ -39,6 +39,9 @@ local music_anchor = SBAR.add("item", "music.anchor", {
     padding_left = PADDINGS,
     y_offset = 2,
     color = COLORS.lavender,
+    shadow = {
+      drawing = false,
+    }
   },
   popup = {
     horizontal = true,
@@ -72,6 +75,9 @@ local track_title = SBAR.add("item", "music.title", {
     },
     max_chars = MUSIC.TITLE_MAX_CHARS,
     color = COLORS.mauve,
+    shadow = {
+      drawing = false,
+    }
   },
   y_offset = 80 + Y_OFFSET,
 })
