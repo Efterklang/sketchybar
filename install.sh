@@ -58,7 +58,7 @@ install_sketchybar() {
     success "Downloaded icon_map.lua ($latest_tag)."
 
     log "Installing SketchyBar dependencies..."
-    brew install lua switchaudio-osx nowplaying-cli
+    brew install lua switchaudio-osx media-control
     brew tap FelixKratz/formulae
     brew install sketchybar
     brew install --cask sf-symbols font-sketchybar-app-font font-maple-mono-nf-cn

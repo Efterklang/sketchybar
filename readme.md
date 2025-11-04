@@ -11,8 +11,24 @@
 
 ## Install
 
+### Using script
+
 ```sh
 curl -fsSL https://raw.githubusercontent.com/Efterklang/sketchybar/main/install.sh | sh -s
+```
+
+### Manual
+
+```sh
+# install dependencies
+brew install lua switchaudio-osx media-control
+# install fonts
+brew install --cask sf-symbols font-sketchybar-app-font font-maple-mono-nf-cn
+# install sbar lua
+git clone --depth 1 --quiet https://github.com/FelixKratz/SbarLua.git /tmp/sbarlua
+cd /tmp/sbarlua && make install
+# install config
+git clone --depth 1 https://github.com/Efterklang/sketchybar ~/.config/sketchybar
 ```
 
 ---
