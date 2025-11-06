@@ -141,6 +141,7 @@ SBAR.bar({
   blur_radius = 15,
   shadow = { drawing = true },
   sticky = true,
+  font_smoothing = true,
   padding_right = PADDINGS,
   padding_left = PADDINGS,
   y_offset = preset_conf.Y_OFFSET,
