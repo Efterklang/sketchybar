@@ -42,9 +42,12 @@ local icons = {
     hide = "",
   },
   media = {
-    back = "􀊊",
-    forward = "􀊌",
-    play_pause = "􀊈",
+    play = "􀊆",
+    pause = "􀊄",
+    back = "􀊊", -- 􀊎
+    forward = "􀊌", -- 􀊐
+    repeating = "􀊞",
+    shuffle = "􀊝",
   },
 }
 

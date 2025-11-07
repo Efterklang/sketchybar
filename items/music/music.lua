@@ -27,7 +27,6 @@ local music_anchor = SBAR.add("item", "music.anchor", {
   label = {
     max_chars = MUSIC.TITLE_MAX_CHARS,
     padding_left = PADDINGS,
-    y_offset = 2,
     color = COLORS.lavender,
   },
   popup = {
@@ -99,10 +98,10 @@ local track_album = SBAR.add("item", "music.album", {
 -- #region Playback Controls
 local CONTROLS_Y_OFFSET = -55 + Y_OFFSET
 
-local music_shuffle = SBAR.add("item", "music.shuffle", {
+local shuffle_btn = SBAR.add("item", "music.shuffle", {
   position = popup_position,
   icon = {
-    string = "􀊝",
+    string = ICONS.media.shuffle,
     padding_left = 5,
     padding_right = 5,
     color = COLORS.grey,
@@ -112,10 +111,10 @@ local music_shuffle = SBAR.add("item", "music.shuffle", {
   y_offset = CONTROLS_Y_OFFSET,
 })
 
-local music_prev = SBAR.add("item", "music.back", {
+local prev_btn = SBAR.add("item", "music.back", {
   position = popup_position,
   icon = {
-    string = "􀊎",
+    string = ICONS.media.back,
     padding_left = 5,
     padding_right = 5,
     color = COLORS.grey,
@@ -124,7 +123,7 @@ local music_prev = SBAR.add("item", "music.back", {
   y_offset = CONTROLS_Y_OFFSET,
 })
 
-local music_play = SBAR.add("item", "music.play", {
+local play_btn = SBAR.add("item", "music.play", {
   position = popup_position,
   background = {
     height = 40,
@@ -137,7 +136,7 @@ local music_play = SBAR.add("item", "music.play", {
   width = 40,
   align = "center",
   icon = {
-    string = "􀊄",
+    string = ICONS.media.pause,
     padding_left = 4,
     padding_right = 4,
     color = COLORS.red,
@@ -146,10 +145,10 @@ local music_play = SBAR.add("item", "music.play", {
   y_offset = CONTROLS_Y_OFFSET,
 })
 
-local music_next = SBAR.add("item", "music.next", {
+local next_btn = SBAR.add("item", "music.next", {
   position = popup_position,
   icon = {
-    string = "􀊐",
+    string = ICONS.media.forward,
     padding_left = 5,
     padding_right = 5,
     color = COLORS.grey,
@@ -158,10 +157,10 @@ local music_next = SBAR.add("item", "music.next", {
   y_offset = CONTROLS_Y_OFFSET,
 })
 
-local music_repeat = SBAR.add("item", "music.repeat", {
+local repeat_btn = SBAR.add("item", "music.repeat", {
   position = popup_position,
   icon = {
-    string = "􀊞",
+    string = ICONS.media.repeating,
     highlight_color = COLORS.lavender,
     padding_left = 5,
     padding_right = 10,
@@ -177,11 +176,11 @@ SBAR.add("item", "music.spacer", {
 })
 
 SBAR.add("bracket", "music.controls", {
-  music_shuffle.name,
-  music_prev.name,
-  music_play.name,
-  music_next.name,
-  music_repeat.name,
+  shuffle_btn.name,
+  prev_btn.name,
+  play_btn.name,
+  next_btn.name,
+  repeat_btn.name,
 }, {
   background = {
     color = COLORS.surface0,
@@ -219,25 +218,25 @@ end
 
 local icon_updater = function(is_playing, is_repeat, is_shuffle)
   if is_playing then
-    music_play:set({
-      icon = { string = "􀊆", color = COLORS.green },
+    play_btn:set({
+      icon = { string = ICONS.media.play, color = COLORS.green },
     })
   else
-    music_play:set({
-      icon = { string = "􀊄", color = COLORS.red },
+    play_btn:set({
+      icon = { string = ICONS.media.pause, color = COLORS.red },
     })
   end
 
   if is_shuffle then
-    music_shuffle:set({ icon = { highlight = true } })
+    shuffle_btn:set({ icon = { highlight = true } })
   else
-    music_shuffle:set({ icon = { highlight = false } })
+    shuffle_btn:set({ icon = { highlight = false } })
   end
 
   if is_repeat then
-    music_repeat:set({ icon = { highlight = true } })
+    repeat_btn:set({ icon = { highlight = true } })
   else
-    music_repeat:set({ icon = { highlight = false } })
+    repeat_btn:set({ icon = { highlight = false } })
   end
 end
 -- #endregion Updaters
@@ -253,28 +252,28 @@ music_anchor:subscribe("mouse.clicked", function()
   client.stats(icon_updater)
 end)
 
-music_play:subscribe("mouse.clicked", function()
+play_btn:subscribe("mouse.clicked", function()
   client.toggle_play()
   SBAR.delay(0.1, function()
     client.stats(icon_updater)
   end)
 end)
 
-music_shuffle:subscribe("mouse.clicked", function()
+shuffle_btn:subscribe("mouse.clicked", function()
   client.toggle_shuffle()
   SBAR.delay(0.1, function()
     client.stats(icon_updater)
   end)
 end)
 
-music_repeat:subscribe("mouse.clicked", function()
+repeat_btn:subscribe("mouse.clicked", function()
   client.toggle_repeat()
   SBAR.delay(0.1, function()
     client.stats(icon_updater)
   end)
 end)
 
-music_prev:subscribe("mouse.clicked", function()
+prev_btn:subscribe("mouse.clicked", function()
   client.prev_track()
   SBAR.delay(0.1, function()
     client.update_album_art(albumart_updater)
@@ -283,7 +282,7 @@ music_prev:subscribe("mouse.clicked", function()
   end)
 end)
 
-music_next:subscribe("mouse.clicked", function()
+next_btn:subscribe("mouse.clicked", function()
   client.next_track()
   SBAR.delay(0.1, function()
     client.update_album_art(albumart_updater)
