@@ -61,7 +61,7 @@ install_sketchybar() {
     brew install lua switchaudio-osx media-control
     brew tap FelixKratz/formulae
     brew install sketchybar
-    brew install --cask sf-symbols font-sketchybar-app-font font-maple-mono-nf-cn
+    brew install --cask font-sketchybar-app-font font-maple-mono-nf-cn
     success "Installed dependencies."
 
     log "Installing SbarLua..."
