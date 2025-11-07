@@ -11,7 +11,6 @@ else
   client = require("items.music.controller.media-control")
 end
 
-local MUSIC_FONT = "Maple Mono NF CN"
 local POPUP_HEIGHT = 120
 local IMAGE_SCALE = 0.15
 local Y_OFFSET = -5
@@ -21,27 +20,18 @@ local music_anchor = SBAR.add("item", "music.anchor", {
   update_freq = 1,
   icon = {
     string = "􁁒",
-    font = {
-      family = "SF Pro",
-      style = FONT.style_map["Bold"],
-      size = 20.0,
-    },
+    font = { size = 20.0 },
     color = COLORS.lavender,
     y_offset = 2,
   },
   label = {
-    font = {
-      family = MUSIC_FONT,
-      style = FONT.style_map["Bold"],
-      size = 14.0,
-    },
     max_chars = MUSIC.TITLE_MAX_CHARS,
     padding_left = PADDINGS,
     y_offset = 2,
     color = COLORS.lavender,
     shadow = {
       drawing = false,
-    }
+    },
   },
   popup = {
     horizontal = true,
@@ -68,16 +58,12 @@ local track_title = SBAR.add("item", "music.title", {
   padding_right = 0,
   width = 0,
   label = {
-    font = {
-      family = MUSIC_FONT,
-      style = FONT.style_map["Bold"],
-      size = 20.0,
-    },
+    font = { size = 20.0 },
     max_chars = MUSIC.TITLE_MAX_CHARS,
     color = COLORS.mauve,
     shadow = {
       drawing = false,
-    }
+    },
   },
   y_offset = 80 + Y_OFFSET,
 })
@@ -91,11 +77,7 @@ local track_artist = SBAR.add("item", "music.artist", {
   width = 0,
   align = "center",
   label = {
-    font = {
-      family = MUSIC_FONT,
-      style = FONT.style_map["Bold"],
-      size = 15.0,
-    },
+    font = { size = 15.0 },
     max_chars = 20,
     color = COLORS.blue,
   },
@@ -109,11 +91,7 @@ local track_album = SBAR.add("item", "music.album", {
   y_offset = 25 + Y_OFFSET,
   width = 0,
   label = {
-    font = {
-      family = MUSIC_FONT,
-      style = FONT.style_map["Regular"],
-      size = 15.0,
-    },
+    font = { size = 15.0 },
     max_chars = 20,
     color = COLORS.lavender,
   },

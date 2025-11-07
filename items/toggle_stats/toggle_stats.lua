@@ -6,8 +6,8 @@ SBAR.exec("sketchybar --add event toggle_stats")
 -- 需要控制显示/隐藏的 items
 local stats_items = {
   "widgets.cpu",
-  "widgets.wifi1",
-  "widgets.wifi2",
+  "widgets.upload_speed",
+  "widgets.download_speed",
   "widgets.ram",
 }
 

@@ -20,19 +20,11 @@ local popup_width = 250
 
 local ssid = SBAR.add("item", {
   position = "popup." .. wifi.name,
-  icon = {
-    font = {
-      style = FONT.style_map["Bold"],
-    },
-    string = ICONS.wifi.router,
-  },
+  icon = { string = ICONS.wifi.router },
   width = popup_width,
   align = "center",
   label = {
-    font = {
-      size = 15,
-      style = FONT.style_map["Bold"],
-    },
+    font = { size = 15 },
     max_chars = 18,
     string = "????????????",
   },
@@ -124,12 +116,9 @@ local function toggle_details()
   local should_draw = wifi:query().popup.drawing == "off"
   if should_draw then
     wifi:set({ popup = { drawing = true } })
-    SBAR.exec(
-      "networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'",
-      function(result)
-        ssid:set({ label = result })
-      end
-    )
+    SBAR.exec("networksetup -listpreferredwirelessnetworks en0 | sed -n '2p' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'", function(result)
+      ssid:set({ label = result })
+    end)
     SBAR.exec("networksetup -getcomputername", function(result)
       hostname:set({ label = result })
     end)

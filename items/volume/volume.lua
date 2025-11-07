@@ -2,25 +2,17 @@ local popup_width = 150
 
 local volume_icon = SBAR.add("item", "widgets.volume", {
   position = "right",
-  padding_right = -1,
+  padding_right = 2,
   icon = {
     string = ICONS.volume._100,
     width = 0,
     align = "left",
     color = COLORS.yellow,
-    font = {
-      style = FONT.style_map["Regular"],
-      size = 14.0,
-    },
   },
   label = {
     width = 25,
     align = "left",
     color = COLORS.yellow,
-    font = {
-      style = FONT.style_map["Regular"],
-      size = 14.0,
-    },
   },
 })
 
@@ -81,7 +73,7 @@ local function volume_toggle_details(env)
     SBAR.exec("SwitchAudioSource -t output -c", function(result)
       current_audio_device = result:sub(1, -2)
       SBAR.exec("SwitchAudioSource -a -t output", function(available)
-        current = current_audio_device
+        local current = current_audio_device
         local counter = 0
 
         for device in string.gmatch(available, "[^\r\n]+") do

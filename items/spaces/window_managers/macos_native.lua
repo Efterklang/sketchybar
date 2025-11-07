@@ -48,11 +48,7 @@ end
 function Window_Manager:perform_switch_desktop(button, sid)
   local key_codes = { 18, 19, 20, 21, 23, 22, 26, 28, 25, 29 }
   if button == "left" then
-    SBAR.exec(
-      'osascript -e \'tell application "System Events" to key code '
-        .. key_codes[tonumber(sid)]
-        .. " using {control down}'"
-    )
+    SBAR.exec('osascript -e \'tell application "System Events" to key code ' .. key_codes[tonumber(sid)] .. " using {control down}'")
   elseif button == "right" then
     SBAR.exec("osascript -e 'tell application \"Mission Control\" to activate'")
   elseif button == "other" then -- for eaxmple, middle click

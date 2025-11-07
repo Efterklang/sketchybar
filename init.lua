@@ -22,8 +22,8 @@ local defaults = {
   },
 
   FONT = {
-    nerd_font = "Maple Mono NF CN",
-    numbers = "Maple Mono NF CN",
+    icon_font = "Maple Mono NF CN",
+    label_font = "Maple Mono NF CN",
     style_map = {
       ["Regular"] = "Regular",
       ["Semibold"] = "Medium",
@@ -154,14 +154,14 @@ SBAR.default({
   padding_left = PADDINGS,
   padding_right = PADDINGS,
   icon = {
-    font = { family = FONT.nerd_font, style = FONT.style_map["Bold"], size = 16.0 },
+    font = { family = FONT.icon_font, style = FONT.style_map["Bold"], size = 16.0 },
     color = COLORS.text,
     padding_left = PADDINGS,
     padding_right = PADDINGS,
     background = { image = { corner_radius = 9 } },
   },
   label = {
-    font = { family = FONT.nerd_font, style = FONT.style_map["Bold"], size = 13.0 },
+    font = { family = FONT.label_font, style = FONT.style_map["Bold"], size = 13.0 },
     color = COLORS.text,
     padding_left = PADDINGS,
     padding_right = PADDINGS,

@@ -24,7 +24,7 @@ curl -fsSL https://raw.githubusercontent.com/Efterklang/sketchybar/main/install.
 brew install lua switchaudio-osx media-control
 # install fonts
 brew install --cask sf-symbols font-sketchybar-app-font font-maple-mono-nf-cn
-# install sbar lua
+# install SbarLua
 git clone --depth 1 --quiet https://github.com/FelixKratz/SbarLua.git /tmp/sbarlua
 cd /tmp/sbarlua && make install
 # install config
@@ -50,8 +50,8 @@ return {
   PRESET = "gnix", -- or "compact"
 
   FONT = {
-    nerd_font = "Maple Mono NF CN",
-    numbers = "Maple Mono NF CN",
+    icon_font = "Maple Mono NF CN",
+    label_font = "Maple Mono NF CN",
     style_map = {
       Regular = "Regular",
       Semibold = "Medium",

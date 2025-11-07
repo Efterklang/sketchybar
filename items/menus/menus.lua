@@ -17,9 +17,6 @@ for i = 1, max_items, 1 do
     drawing = false,
     icon = { drawing = false },
     label = {
-      font = {
-        style = FONT.style_map[i == 1 and "Heavy" or "Semibold"],
-      },
       padding_left = 6,
       padding_right = 6,
     },

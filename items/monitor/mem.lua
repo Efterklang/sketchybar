@@ -10,11 +10,7 @@ local ram = SBAR.add("graph", "widgets.ram", 42, {
   icon = { string = ICONS.ram, color = COLORS.red },
   label = {
     string = "RAM ??%",
-    font = {
-      family = FONT.nerd_font,
-      style = FONT.style_map["Bold"],
-      size = 9.0,
-    },
+    font = { size = 9.0 },
     align = "right",
     padding_right = 0,
     width = 0,

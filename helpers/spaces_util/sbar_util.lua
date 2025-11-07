@@ -1,57 +1,6 @@
 -- Use Greek alphabet
-local greek_uppercase = {
-  "Α",
-  "B",
-  "Γ",
-  "Δ",
-  "E",
-  "Z",
-  "H",
-  "Θ",
-  "I",
-  "K",
-  "Λ",
-  "M",
-  "N",
-  "Ξ",
-  "O",
-  "Π",
-  "P",
-  "Σ",
-  "T",
-  "Y",
-  "Φ",
-  "X",
-  "Ψ",
-  "Ω",
-}
-
-local greek_lowercase = {
-  "α",
-  "β",
-  "γ",
-  "δ",
-  "ε",
-  "ζ",
-  "η",
-  "θ",
-  "ι",
-  "κ",
-  "λ",
-  "μ",
-  "ν",
-  "ξ",
-  "ο",
-  "π",
-  "ρ",
-  "σ",
-  "τ",
-  "υ",
-  "φ",
-  "χ",
-  "ψ",
-  "ω",
-}
+local greek_uppercase = { "Α", "B", "Γ", "Δ", "E", "Z", "H", "Θ", "I", "K", "Λ", "M", "N", "Ξ", "O", "Π", "P", "Σ", "T", "Y", "Φ", "X", "Ψ", "Ω" }
+local greek_lowercase = { "α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω" }
 
 --- @class space_api
 --- @field created_spaces table key space_id, value SketchyBar space item instance
@@ -75,7 +24,6 @@ function space_api.add_space_item(space_id, idx)
   local space = SBAR.add("space", "space." .. space_id, {
     space = space_id,
     icon = {
-      font = { family = FONT.nerd_font },
       string = space_label,
       padding_left = SPACE_ITEM_PADDING,
       padding_right = 8,
