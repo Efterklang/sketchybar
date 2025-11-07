@@ -15,6 +15,11 @@ local POPUP_HEIGHT = 120
 local IMAGE_SCALE = 0.15
 local Y_OFFSET = -5
 
+--- @type number the delay between `media control` command and `info fetch` command; This should be adjusted based on system performance.
+-- After sending a next_track command, the track info might not update immediately.
+-- That is to say, running `media-control get` right after `media-control next-track` may still return the old track info.
+local DELAY_TIME = 0.2
+
 local music_anchor = SBAR.add("item", "music.anchor", {
   position = "right",
   update_freq = 1,
@@ -254,28 +259,28 @@ end)
 
 play_btn:subscribe("mouse.clicked", function()
   client.toggle_play()
-  SBAR.delay(0.1, function()
+  SBAR.exec("sleep " .. DELAY_TIME, function()
     client.stats(icon_updater)
   end)
 end)
 
 shuffle_btn:subscribe("mouse.clicked", function()
   client.toggle_shuffle()
-  SBAR.delay(0.1, function()
+  SBAR.exec("sleep " .. DELAY_TIME, function()
     client.stats(icon_updater)
   end)
 end)
 
 repeat_btn:subscribe("mouse.clicked", function()
   client.toggle_repeat()
-  SBAR.delay(0.1, function()
+  SBAR.exec("sleep " .. DELAY_TIME, function()
     client.stats(icon_updater)
   end)
 end)
 
 prev_btn:subscribe("mouse.clicked", function()
   client.prev_track()
-  SBAR.delay(0.1, function()
+  SBAR.exec("sleep " .. DELAY_TIME, function()
     client.update_album_art(albumart_updater)
     client.update_current_track(track_info_updater)
     client.stats(icon_updater)
@@ -284,7 +289,7 @@ end)
 
 next_btn:subscribe("mouse.clicked", function()
   client.next_track()
-  SBAR.delay(0.1, function()
+  SBAR.exec("sleep " .. DELAY_TIME, function()
     client.update_album_art(albumart_updater)
     client.update_current_track(track_info_updater)
     client.stats(icon_updater)
