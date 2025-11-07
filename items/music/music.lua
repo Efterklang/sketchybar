@@ -29,9 +29,6 @@ local music_anchor = SBAR.add("item", "music.anchor", {
     padding_left = PADDINGS,
     y_offset = 2,
     color = COLORS.lavender,
-    shadow = {
-      drawing = false,
-    },
   },
   popup = {
     horizontal = true,
@@ -39,8 +36,10 @@ local music_anchor = SBAR.add("item", "music.anchor", {
   },
 })
 
+local popup_position = "popup." .. music_anchor.name
+
 local albumart = SBAR.add("item", "music.cover", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   label = { drawing = false },
   icon = { drawing = false },
   padding_right = 10,
@@ -52,7 +51,7 @@ local albumart = SBAR.add("item", "music.cover", {
 })
 
 local track_title = SBAR.add("item", "music.title", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   icon = { drawing = false },
   padding_left = 0,
   padding_right = 0,
@@ -69,7 +68,7 @@ local track_title = SBAR.add("item", "music.title", {
 })
 
 local track_artist = SBAR.add("item", "music.artist", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   icon = { drawing = false },
   y_offset = 50 + Y_OFFSET,
   padding_left = 0,
@@ -84,7 +83,7 @@ local track_artist = SBAR.add("item", "music.artist", {
 })
 
 local track_album = SBAR.add("item", "music.album", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   icon = { drawing = false },
   padding_left = 0,
   padding_right = 0,
@@ -101,7 +100,7 @@ local track_album = SBAR.add("item", "music.album", {
 local CONTROLS_Y_OFFSET = -55 + Y_OFFSET
 
 local music_shuffle = SBAR.add("item", "music.shuffle", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   icon = {
     string = "􀊝",
     padding_left = 5,
@@ -114,7 +113,7 @@ local music_shuffle = SBAR.add("item", "music.shuffle", {
 })
 
 local music_prev = SBAR.add("item", "music.back", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   icon = {
     string = "􀊎",
     padding_left = 5,
@@ -126,7 +125,7 @@ local music_prev = SBAR.add("item", "music.back", {
 })
 
 local music_play = SBAR.add("item", "music.play", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   background = {
     height = 40,
     corner_radius = 20,
@@ -148,7 +147,7 @@ local music_play = SBAR.add("item", "music.play", {
 })
 
 local music_next = SBAR.add("item", "music.next", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   icon = {
     string = "􀊐",
     padding_left = 5,
@@ -160,7 +159,7 @@ local music_next = SBAR.add("item", "music.next", {
 })
 
 local music_repeat = SBAR.add("item", "music.repeat", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   icon = {
     string = "􀊞",
     highlight_color = COLORS.lavender,
@@ -173,7 +172,7 @@ local music_repeat = SBAR.add("item", "music.repeat", {
 })
 
 SBAR.add("item", "music.spacer", {
-  position = "popup." .. music_anchor.name,
+  position = popup_position,
   width = 5,
 })
 

@@ -41,7 +41,7 @@ SBAR.default({
     color = COLORS.text,
     padding_left = PADDINGS,
     padding_right = PADDINGS,
-    shadow = { drawing = true, distance = 2, color = COLORS.crust },
+    shadow = { drawing = false },
   },
   background = {
     height = 28,
