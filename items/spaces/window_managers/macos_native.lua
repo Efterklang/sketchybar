@@ -52,7 +52,7 @@ function Window_Manager:perform_switch_desktop(button, sid)
   elseif button == "right" then
     SBAR.exec("osascript -e 'tell application \"Mission Control\" to activate'")
   elseif button == "other" then -- for eaxmple, middle click
-    LOG.log("Middle click on space " .. sid)
+    LOG:info("Middle click on space " .. sid)
   end
 end
 

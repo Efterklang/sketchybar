@@ -1,13 +1,13 @@
 local client
 
 if MUSIC.CONTROLLER == "media-control" then
-  LOG.log("Using media-control as music controller")
+  LOG:info("Using media-control as music controller")
   client = require("items.music.controller.media-control")
 elseif MUSIC.CONTROLLER == "mpc" then
-  LOG.log("Using mpc as music controller")
+  LOG:info("Using mpc as music controller")
   client = require("items.music.controller.mpc")
 else
-  LOG.log("No valid media controller specified, defaulting to media-control")
+  LOG:info("No valid media controller specified, defaulting to media-control")
   client = require("items.music.controller.media-control")
 end
 
@@ -208,11 +208,12 @@ local track_info_updater = function(title, artist, album)
   track_album:set({ label = display_album })
 end
 
-local albumart_updater = function()
+local albumart_updater = function(path)
+  LOG:info("Updating album art with path: " .. path)
   albumart:set({
     background = {
       image = {
-        string = "/tmp/music_cover.jpg",
+        string = path,
         scale = IMAGE_SCALE,
         drawing = true,
       },

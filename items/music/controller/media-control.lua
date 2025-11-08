@@ -40,16 +40,23 @@ function media_control.update_current_track(callback)
   end)
 end
 
+--- @param callback function used to receive the cover path and update sketchybar ui
 function media_control.update_album_art(callback)
-  -- 使用 media-control get 获取封面数据并保存到文件
-  local size = MUSIC.ALBUM_ART_SIZE
-  local cmd = string.format(
-    'media-control get | jq -r ".artworkData" | base64 -d > /tmp/music_cover.jpg 2>/dev/null && sips -z %d %d /tmp/music_cover.jpg',
-    size,
-    size
-  )
-  SBAR.exec(cmd, function()
-    callback("/tmp/music_cover.jpg")
+  SBAR.exec('media-control get | jq -r ".artworkData"', function(img_data)
+    -- Some media may not have album art, e.g. online videos, use default art in that case
+    if img_data == "null\n" then
+      LOG:warn("No album art found, using default.")
+      callback(MUSIC.DEFAULT_ALBUM_ART_PATH)
+      return
+    end
+
+    local size = MUSIC.ALBUM_ART_SIZE
+    local cover = "/tmp/music_cover.jpg"
+    local cmd = string.format('echo "%s" | base64 -d > %s && sips -z %d %d %s', img_data, cover, size, size, cover)
+
+    SBAR.exec(cmd, function()
+      callback(cover)
+    end)
   end)
 end
 

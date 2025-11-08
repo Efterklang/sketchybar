@@ -52,7 +52,7 @@ function Window_Manager:init()
     end)
 
     item.space:subscribe("mouse.clicked", function(env)
-      LOG.log(env.NAME)
+      LOG:info(env.NAME)
       self:perform_switch_desktop(env.BUTTON, env.SID)
     end)
   end
@@ -80,7 +80,7 @@ function Window_Manager:perform_switch_desktop(button, sid)
   elseif button == "right" then
     -- not implemented
   elseif button == "other" then -- for eaxmple, middle click
-    LOG.log("Middle click on space " .. sid)
+    LOG:info("Middle click on space " .. sid)
   end
 end
 
@@ -106,8 +106,6 @@ function Window_Manager:update_space_label()
           label = icon_line,
         })
       end)
-      -- LOG.log("aerospace list workspace: " .. workspace)
-      -- LOG.print_table(apps)
     end)
   end
 end
