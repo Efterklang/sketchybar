@@ -15,15 +15,15 @@ function logger:log(message, level)
 end
 
 function logger:info(message)
-  return self.log(message, "INFO")
+  self:log(message, "INFO")
 end
 
 function logger:warn(message)
-  return self.log(message, "WARN")
+  self:log(message, "WARN")
 end
 
 function logger:error(message)
-  return self.log(message, "ERROR")
+  self:log(message, "ERROR")
 end
 
 --- Prints a variable's name, type, and value to the log file.
