@@ -44,6 +44,11 @@ The default configuration is located in **`settings.lua`**.
 Rewritten entirely in **Lua** using the `sbarlua` API. For the legacy **bash**
 version, see [here](https://github.com/Efterklang/sketchybar/tree/bash).
 
+### Themes
+
+| Tokyo Night                                                                                                                          | Catppuccin Mocha                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| <img width="3028" height="1732" alt="image" src="https://github.com/user-attachments/assets/2219184b-5456-438d-b86e-c5fc30369196" /> | <img width="3028" height="1732" alt="image" src="https://github.com/user-attachments/assets/ec762bdd-e8e4-42f5-8fdf-a49ccc43ba87"/> |
 ---
 
 ### Left Items
