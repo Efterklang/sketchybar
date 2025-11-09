@@ -52,9 +52,10 @@ function media_control.update_album_art(callback)
 
     local size = MUSIC.ALBUM_ART_SIZE
     local cover = "/tmp/music_cover.jpg"
-    local cmd = string.format('echo "%s" | base64 -d > %s && sips -z %d %d %s', img_data, cover, size, size, cover)
+    local gen_img_cmd = string.format('echo "%s" | base64 -d > %s', img_data, cover)
+    local process_cmd = string.format('magick "%s" -resize %dx%d^ -gravity center -extent %dx%d %s', cover, size, size, size, size, cover)
 
-    SBAR.exec(cmd, function()
+    SBAR.exec(gen_img_cmd .. "&&" .. process_cmd, function()
       callback(cover)
     end)
   end)

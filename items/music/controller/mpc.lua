@@ -48,8 +48,11 @@ end
 
 function MPC.update_album_art(callback)
   local size = MUSIC.ALBUM_ART_SIZE
-  local cmd = string.format('mpc readpicture "$(mpc current -f %%file%%)" > /tmp/music_cover.jpg && sips -z %d %d /tmp/music_cover.jpg', size, size)
-  SBAR.exec(cmd, function()
+  local cover = "/tmp/music_cover.jpg"
+  local gen_img_cmd = string.format('mpc readpicture "$(mpc current -f %%file%%)" > %s', cover)
+  local process_cmd = string.format('magick "%s" -resize %dx%d^ -gravity center -extent %dx%d %s', cover, size, size, size, size, cover)
+
+  SBAR.exec(gen_img_cmd .. "&&" .. process_cmd, function()
     callback("/tmp/music_cover.jpg")
   end)
 end
