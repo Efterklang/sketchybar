@@ -1,5 +1,7 @@
 WINDOW_MANAGER = "macos_native"
 PRESET = "gnix"
+--- Select the theme of sketchybar, pick one from `./themes/<theme_name>.lua`
+THEME = "catppuccin_mocha"
 
 SBAR_HOME = (os.getenv("HOME") or "~") .. "/.config/sketchybar/"
 ITEMS_HOME = SBAR_HOME .. "items/"

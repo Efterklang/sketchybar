@@ -32,7 +32,7 @@ function space_api.add_space_item(space_id, idx)
     },
     label = {
       padding_right = SPACE_ITEM_PADDING,
-      color = COLORS.grey,
+      color = COLORS.subtext0,
       highlight_color = COLORS.lavender,
       font = "sketchybar-app-font:Regular:16.0",
       y_offset = -1,

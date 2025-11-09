@@ -66,17 +66,17 @@ version, see [here](https://github.com/Efterklang/sketchybar/tree/bash).
 
 ### Right Items
 
-| Item                                     | Click Script                                                            |
-| ---------------------------------------- | ----------------------------------------------------------------------- |
-| mpd + mpc (music player daemon + client) | show music controller (play/pause, next, previous, repeat/random, etc.) |
-| hardware stats                           | cpu graph[^2] · memory graph[^3] · netspeed item[^2]                    |
-| toggle stats                             | show/hide hardware stats (cpu, memory, netspeed)                        |
-| homebrew stats                           | show outdated packages                                                  |
-| wechat, qq (or any other apps)           | open chat app                                                           |
-| volume                                   | show volume slider and output device selector[^2]                       |
-| wifi                                     | show wifi networks and VPN status                                       |
-| battery                                  | show remaining time and percentage                                      |
-| cal & time                               | open Calendar.app                                                       |
+| Item                           | Click Script                                                            |
+| ------------------------------ | ----------------------------------------------------------------------- |
+| media                          | show music controller (play/pause, next, previous, repeat/random, etc.) |
+| hardware stats                 | cpu graph[^2] · memory graph[^3] · netspeed item[^2]                    |
+| toggle stats                   | show/hide hardware stats (cpu, memory, netspeed)                        |
+| homebrew stats                 | show outdated packages                                                  |
+| wechat, qq (or any other apps) | open chat app                                                           |
+| volume                         | show volume slider and output device selector[^2]                       |
+| wifi                           | show wifi networks and VPN status                                       |
+| battery                        | show remaining time and percentage                                      |
+| cal & time                     | open Calendar.app                                                       |
 
 ---
 
@@ -88,5 +88,5 @@ version, see [here](https://github.com/Efterklang/sketchybar/tree/bash).
 
 [^3]: Credit [TheGoldenPatrik1/sketchybar-config: My personal configuration for SketchyBar](https://github.com/TheGoldenPatrik1/sketchybar-config)
 
-weather
-https://github.com/FelixKratz/SketchyBar/discussions/12?sort=top#discussioncomment-5283361
+<!-- weather
+https://github.com/FelixKratz/SketchyBar/discussions/12?sort=top#discussioncomment-5283361 -->

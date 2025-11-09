@@ -1,9 +1,8 @@
+-- Catppuccin Mocha (Dark theme)
 return {
-  -- Catppuccin Mocha colors
   peach = 0xfffab387,
   mauve = 0xffcba6f7,
-  grey = 0xff6c7086, -- overlay0
-  transparent = 0x00000000,
+  grey = 0xff6c7086,
 
   rosewater = 0xfff5e0dc,
   flamingo = 0xfff2cdcd,
@@ -29,20 +28,4 @@ return {
   base = 0xff1e1e2e,
   mantle = 0xff181825,
   crust = 0xff11111b,
-
-  bar = {
-    bg = 0xff11111b, -- crust
-    border = 0xff181825, -- mantle
-  },
-  popup = {
-    bg = 0xe0313244, -- surface0 with higher alpha (less transparent)
-    border = 0xff45475a, -- surface1
-  },
-
-  with_alpha = function(color, alpha)
-    if alpha > 1.0 or alpha < 0.0 then
-      return color
-    end
-    return (color & 0x00ffffff) | (math.floor(alpha * 255.0) << 24)
-  end,
 }

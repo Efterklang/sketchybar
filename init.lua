@@ -1,7 +1,7 @@
 require("settings")
 SBAR = require("sketchybar")
 LOG = require("helpers.debug_info")
-COLORS = require("colors")
+COLORS = require("themes.init")
 ICONS = require("icons")
 
 SBAR.begin_config()
