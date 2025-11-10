@@ -48,7 +48,7 @@ install_sketchybar() {
 
   if get_yes_no "✨ Install SketchyBar dependencies and helpers?"; then
     log "Installing SketchyBar dependencies..."
-    brew install lua switchaudio-osx media-control imagemagick
+    brew install lua jq switchaudio-osx media-control imagemagick
     brew tap FelixKratz/formulae
     brew install sketchybar
     brew install --cask font-sketchybar-app-font font-maple-mono-nf-cn
