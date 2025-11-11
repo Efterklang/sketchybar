@@ -53,7 +53,10 @@ install_sketchybar() {
     brew install sketchybar
     brew install --cask font-sketchybar-app-font font-maple-mono-nf-cn
     success "Installed dependencies."
-
+    log "Installing sketchybar-system-stats plugin..."
+    brew tap joncrangle/tap
+    brew install sketchybar-system-stats
+    success "sketchybar-system-stats plugin installed."
     log "Installing SbarLua..."
     tmpdir=$(mktemp -d)
     trap 'rm -rf "$tmpdir"' EXIT

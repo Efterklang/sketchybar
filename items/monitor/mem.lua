@@ -21,24 +21,6 @@ local ram = SBAR.add("graph", "widgets.ram", 42, {
   padding_right = PADDINGS,
 })
 
-ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
-  SBAR.exec("memory_pressure", function(output)
-    local percentage = output:match("System%-wide memory free percentage: (%d+)")
-    local load = 100 - tonumber(percentage)
-    ram:push({ load / 100. })
-    local color = COLORS.blue
-    if load > 30 then
-      if load < 60 then
-        color = COLORS.yellow
-      elseif load < 80 then
-        color = COLORS.orange
-      else
-        color = COLORS.red
-      end
-    end
-    ram:set({
-      graph = { color = color },
-      label = { string = "RAM " .. load .. "%" },
-    })
-  end)
+ram:subscribe({ "system_stats" }, function(env)
+  GRAPH_UTILS.update_graph(env.RAM_USAGE, ram, "RAM")
 end)

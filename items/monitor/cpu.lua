@@ -1,7 +1,3 @@
--- Execute the event provider binary which provides the event "cpu_update" for
--- the cpu load data, which is fired every 2.0 seconds.
-SBAR.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
-
 local cpu = SBAR.add("graph", "widgets.cpu", 42, {
   position = "right",
   graph = { color = COLORS.blue },
@@ -23,26 +19,8 @@ local cpu = SBAR.add("graph", "widgets.cpu", 42, {
   padding_right = PADDINGS + 10,
 })
 
-cpu:subscribe("cpu_update", function(env)
-  -- Also available: env.user_load, env.sys_load
-  local load = tonumber(env.total_load)
-  cpu:push({ load / 100. })
-
-  local color = COLORS.blue
-  if load > 30 then
-    if load < 60 then
-      color = COLORS.yellow
-    elseif load < 80 then
-      color = COLORS.peach
-    else
-      color = COLORS.red
-    end
-  end
-
-  cpu:set({
-    graph = { color = color },
-    label = "CPU " .. env.total_load .. "%",
-  })
+cpu:subscribe({ "system_stats" }, function(env)
+  GRAPH_UTILS.update_graph(env.CPU_USAGE, cpu, "CPU")
 end)
 
 cpu:subscribe("mouse.clicked", function(env)

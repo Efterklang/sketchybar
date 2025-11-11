@@ -3,7 +3,7 @@ SBAR = require("sketchybar")
 LOG = require("helpers.debug_info")
 COLORS = require("themes.init")
 ICONS = require("icons")
-
+GRAPH_UTILS = require("helpers.graph_utils")
 SBAR.begin_config()
 
 local preset_conf = PRESET_OPTIONS[PRESET] or PRESET_OPTIONS["gnix"]
@@ -63,6 +63,10 @@ SBAR.default({
   },
   scroll_texts = true,
 })
+
+SBAR.exec("killall stats_provider >/dev/null; stats_provider --cpu usage --disk usage --memory ram_usage --network en0 --interval 2", function()
+  LOG:info("Started stats_provider_rust")
+end)
 
 require("items")
 

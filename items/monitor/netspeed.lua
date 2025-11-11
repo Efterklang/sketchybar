@@ -1,7 +1,3 @@
--- Execute the event provider binary which provides the event "network_update"
--- for the network interface "en0", which is fired every 2.0 seconds.
-SBAR.exec("killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0")
-
 local upload_speed = SBAR.add("item", "widgets.upload_speed", {
   position = "right",
   padding_left = -5,
@@ -35,20 +31,20 @@ local download_speed = SBAR.add("item", "widgets.download_speed", {
   y_offset = -4,
 })
 
-upload_speed:subscribe("network_update", function(env)
-  local up_color = (env.upload == "000 Bps") and COLORS.grey or COLORS.red
-  local down_color = (env.download == "000 Bps") and COLORS.grey or COLORS.blue
+upload_speed:subscribe("system_stats", function(env)
+  local up_color = (env.NETWORK_TX_en0 == "0KB/s") and COLORS.grey or COLORS.red
+  local down_color = (env.NETWORK_RX_en0 == "0KB/s") and COLORS.grey or COLORS.blue
   upload_speed:set({
     icon = { color = up_color },
     label = {
-      string = env.upload,
+      string = env.NETWORK_TX_en0,
       color = up_color,
     },
   })
   download_speed:set({
     icon = { color = down_color },
     label = {
-      string = env.download,
+      string = env.NETWORK_RX_en0,
       color = down_color,
     },
   })

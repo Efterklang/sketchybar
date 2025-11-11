@@ -22,6 +22,9 @@ curl -fsSL https://raw.githubusercontent.com/Efterklang/sketchybar/main/install.
 ```sh
 # install dependencies
 brew install lua jq switchaudio-osx media-control imagemagick
+# install sketchybar system stats plugin for CPU, RAM and network monitoring
+brew tap joncrangle/tap
+brew install sketchybar-system-stats
 # install fonts
 brew install --cask font-sketchybar-app-font font-maple-mono-nf-cn
 # install SbarLua
