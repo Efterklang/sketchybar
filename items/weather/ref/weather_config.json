@@ -1,0 +1,12 @@
+{
+    "weathergov": {
+        "location": "LOC/x,y",
+        "url": "https://api.weather.gov/gridpoints/",
+        "format": "forecast"
+    },
+    "wttr": {
+        "url": "https://wttr.in/",
+        "location": "CITY+STATE",
+        "format": "format=2"
+    }
+}

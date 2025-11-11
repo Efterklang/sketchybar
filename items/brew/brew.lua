@@ -9,7 +9,7 @@ local brew = SBAR.add("item", "brew", {
   label = {
     string = "?",
   },
-  update_freq = 60,
+  update_freq = 1800, -- half an hour
   popup = {
     align = "right",
     height = 20,

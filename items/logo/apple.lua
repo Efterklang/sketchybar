@@ -14,6 +14,3 @@ local apple = SBAR.add("item", {
   padding_right = 1,
   click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
 })
-
--- Padding item required because of bracket
-SBAR.add("item", { width = 7 })
