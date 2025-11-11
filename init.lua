@@ -64,7 +64,7 @@ SBAR.default({
   scroll_texts = true,
 })
 
-SBAR.exec("killall stats_provider >/dev/null; stats_provider --cpu usage --disk usage --memory ram_usage --network en0 --interval 2", function()
+SBAR.exec("killall stats_provider >/dev/null; stats_provider --cpu usage --memory ram_usage --network en0 --interval 1", function()
   LOG:info("Started stats_provider_rust")
 end)
 

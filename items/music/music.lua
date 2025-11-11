@@ -23,6 +23,7 @@ local DELAY_TIME = 0.2
 local music_anchor = SBAR.add("item", "music.anchor", {
   position = "right",
   update_freq = 1,
+  padding_right = PADDINGS + 6,
   icon = {
     string = "􁁒",
     font = { size = 20.0 },

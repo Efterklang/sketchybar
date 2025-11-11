@@ -38,11 +38,11 @@ end
 local function format_speed(speed_str)
   local speed = remove_speed_unit_postfix(speed_str)
   if speed < 1024 then
-    return string.format("%d Kb/s", speed)
+    return string.format("%d KB/s", speed)
   elseif speed < 1024 * 1024 then
-    return string.format("%.1f Mb/s", speed / 1024)
+    return string.format("%.1f MB/s", speed / 1024)
   else
-    return string.format("%.1f Gb/s", speed / (1024 * 1024))
+    return string.format("%.1f GB/s", speed / (1024 * 1024))
   end
 end
 
@@ -52,6 +52,12 @@ upload_speed:subscribe("system_stats", function(env)
 
   local tx = format_speed(env.NETWORK_TX_en0)
   local rx = format_speed(env.NETWORK_RX_en0)
+  -- make tx, rx string length equal for better alignment
+  if #tx < #rx then
+    tx = string.rep("0", #rx - #tx) .. tx
+  elseif #rx < #tx then
+    rx = string.rep("0", #tx - #rx) .. rx
+  end
 
   upload_speed:set({
     icon = { color = up_color },
