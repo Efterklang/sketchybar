@@ -69,7 +69,7 @@ function Sketchybar.add(type, ...) end
 
 --- This function is truly async, which means that the command is executed without blocking the event thread
 ---@param command string The shell command to execute
----@param callback? fun(result: string, exit_code: number) Optional callback function that will receive the result of the command as the first argument. Additionally, should the result have a JSON structure, it will be parsed into a LUA table.
+---@param callback? fun(result: string|table, exit_code: number) Optional callback function that will receive the result of the command as the first argument. Additionally, should the result have a JSON structure, it will be parsed into a LUA table.
 function Sketchybar.exec(command, callback) end
 
 ---@param event string
@@ -83,4 +83,6 @@ function Sketchybar.animate(curve, duration, callback) end
 
 ---@param bar_name string
 function Sketchybar.set_bar_name(bar_name) end
+
+return Sketchybar
 -- #endregion SketchybarItem
