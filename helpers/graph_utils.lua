@@ -1,11 +1,7 @@
 M = {}
 
-local convert_percentage_to_int = function(percentage_str)
-  return tonumber(percentage_str:sub(1, #percentage_str - 1))
-end
-
 M.update_graph = function(percentage_str, sketchybar_item, label_string)
-  local percentage_int = convert_percentage_to_int(percentage_str)
+  local percentage_int = tonumber(percentage_str)
   sketchybar_item:push({ percentage_int / 100. })
   local color = COLORS.blue
   if percentage_int > 30 then
@@ -19,7 +15,7 @@ M.update_graph = function(percentage_str, sketchybar_item, label_string)
   end
   sketchybar_item:set({
     graph = { color = color },
-    label = { string = string.format("%s %s", label_string, percentage_str) },
+    label = { string = string.format("%s %s%%", label_string, percentage_str) },
   })
 end
 
