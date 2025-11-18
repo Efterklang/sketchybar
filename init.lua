@@ -61,6 +61,19 @@ SBAR.default({
     blur_radius = 50,
     align = "center",
   },
+  slider = {
+    background = {
+      height = 6,
+      corner_radius = 3,
+      color = COLORS.surface1,
+    },
+    highlight_color = COLORS.blue,
+    knob = {
+      string = "􀀁",
+      drawing = true,
+      color = COLORS.lavender,
+    },
+  },
   scroll_texts = true,
 })
 

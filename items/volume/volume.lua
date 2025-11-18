@@ -17,18 +17,6 @@ local volume_icon = SBAR.add("item", "widgets.volume", {
 
 local volume_slider = SBAR.add("slider", popup_width, {
   position = "popup." .. volume_icon.name,
-  slider = {
-    highlight_color = COLORS.blue,
-    background = {
-      height = 6,
-      corner_radius = 3,
-      color = COLORS.surface1,
-    },
-    knob = {
-      string = "􀀁",
-      drawing = true,
-    },
-  },
   background = { color = COLORS.base, height = 2, y_offset = -20 },
   click_script = 'osascript -e "set volume output volume $PERCENTAGE"',
 })
