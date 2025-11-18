@@ -95,26 +95,24 @@ end
 local function update(sender)
   local prev_count = get_brew_count()
   -- before checking outdated, run brew update
-  SBAR.exec("/bin/zsh -lc 'brew update'", function()
-    SBAR.exec("/bin/zsh -lc 'brew outdated'", function(outdated)
-      local count = 0
-      if outdated and outdated ~= "" then
-        for _ in outdated:gmatch("[^\r\n]+") do
-          count = count + 1
-        end
+  SBAR.exec("/bin/zsh -lc 'brew update 1>/dev/null && brew outdated'", function(outdated)
+    local count = 0
+    if outdated and outdated ~= "" then
+      for _ in outdated:gmatch("[^\r\n]+") do
+        count = count + 1
       end
+    end
 
-      render_bar_item(count)
-      render_popup(outdated)
+    render_bar_item(count)
+    render_popup(outdated)
 
-      -- 如果数量变化或强制更新，添加动画
-      if count ~= prev_count or sender == "forced" then
-        SBAR.animate("tanh", 15, function()
-          brew:set({ label = { y_offset = 5 } })
-          brew:set({ label = { y_offset = 0 } })
-        end)
-      end
-    end)
+    -- 如果数量变化或强制更新，添加动画
+    if count ~= prev_count or sender == "forced" then
+      SBAR.animate("tanh", 15, function()
+        brew:set({ label = { y_offset = 5 } })
+        brew:set({ label = { y_offset = 0 } })
+      end)
+    end
   end)
 end
 
