@@ -68,7 +68,7 @@ function Window_Manager:update_space_label(env)
   end
 
   if no_app then
-    icon_line = " —"
+    icon_line = "—"
   end
   SBAR.animate("tanh", 10, function()
     self.spaces[env.INFO.space]:set({ label = icon_line })
