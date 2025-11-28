@@ -4,7 +4,6 @@ local sbar_utils = require("helpers.spaces_util.sbar_util")
 -- Window change: When a window is created or destroyed on a space
 -- Focus change: When the focused space changes
 local Window_Manager = {
-  spaces = {},
   events = {
     window_change = "space_windows_change",
     focus_change = "space_change",
@@ -14,14 +13,13 @@ local Window_Manager = {
 --- Initialize space items in SketchyBar
 function Window_Manager:init()
   for i = 1, 10 do
-    local item = sbar_utils.add_space_item(i, i)
-    self.spaces[i] = item.space
+    local space = sbar_utils:add_space_item(i, i)
 
-    item.space:subscribe(self.events.focus_change, function(env)
-      sbar_utils.highlight_focused_space(item, env.SELECTED == "true")
+    space:subscribe(self.events.focus_change, function(env)
+      sbar_utils:highlight_focused_space(space, env.SELECTED == "true")
     end)
 
-    item.space:subscribe("mouse.clicked", function(env)
+    space:subscribe("mouse.clicked", function(env)
       self:perform_switch_desktop(env.BUTTON, env.SID)
     end)
   end
@@ -39,7 +37,7 @@ function Window_Manager:start_watcher()
   })
 
   watcher:subscribe(self.events.window_change, function(env)
-    self:update_space_label(env)
+    self:update_space_label(env.INFO.space, env.INFO.apps)
   end)
 end
 
@@ -56,23 +54,14 @@ function Window_Manager:perform_switch_desktop(button, sid)
   end
 end
 
---- @param env table containing INFO.apps and INFO.space
-function Window_Manager:update_space_label(env)
-  local icon_line = ""
-  local no_app = true
-  for app, count in pairs(env.INFO.apps) do
-    no_app = false
-    local lookup = app_icons[app]
-    local icon = ((lookup == nil) and app_icons["default"] or lookup)
-    icon_line = icon_line .. icon
+--- @param space number The ID of the space to update
+--- @param apps table<string, any> List of application names in this space
+function Window_Manager:update_space_label(space, apps)
+  local apps_list = {}
+  for app_name, _ in pairs(apps) do
+    table.insert(apps_list, app_name)
   end
-
-  if no_app then
-    icon_line = "—"
-  end
-  SBAR.animate("tanh", 10, function()
-    self.spaces[env.INFO.space]:set({ label = icon_line })
-  end)
+  sbar_utils:update_space(space, apps_list)
 end
 
 return Window_Manager

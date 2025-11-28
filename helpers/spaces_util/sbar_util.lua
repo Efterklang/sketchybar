@@ -1,10 +1,9 @@
--- Use Greek alphabet
+local icons = require("helpers.spaces_util.app_icons")
 local greek_uppercase = { "Α", "B", "Γ", "Δ", "E", "Z", "H", "Θ", "I", "K", "Λ", "M", "N", "Ξ", "O", "Π", "P", "Σ", "T", "Y", "Φ", "X", "Ψ", "Ω" }
 local greek_lowercase = { "α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω" }
 
 --- @class space_api
---- @field created_spaces table key space_id, value SketchyBar space item instance
---- @field add_space_item function create sketchybar space item
+--- @field created_spaces table<string, SketchybarItem> key space_id, value SketchyBar space item instance
 local space_api = {
   created_spaces = {},
 }
@@ -12,12 +11,12 @@ local space_api = {
 -- create a sketchybar space item  and bracket
 --- @param space_id string | number The ID of the space, for aerospace, this can be "1","2"..."A","B" etc.
 --- @param idx number The index of the space, for example, 1 for first space
---- @return table {space: space_item, bracket: bracket_item}
-function space_api.add_space_item(space_id, idx)
+--- @return SketchybarItem the created space item
+function space_api:add_space_item(space_id, idx)
   local space_label = space_id
-  if SPACE_LABEL == "greek_uppercase" then
+  if SPACES.ID_STYLE == "greek_uppercase" then
     space_label = greek_uppercase[idx] or space_id
-  elseif SPACE_LABEL == "greek_lowercase" then
+  elseif SPACES.ID_STYLE == "greek_lowercase" then
     space_label = greek_lowercase[idx] or space_id
   end
 
@@ -25,19 +24,19 @@ function space_api.add_space_item(space_id, idx)
     space = space_id,
     icon = {
       string = space_label,
-      padding_left = SPACE_ITEM_PADDING,
+      padding_left = SPACES.ITEM_PADDING,
       padding_right = 8,
       color = COLORS.text,
       highlight_color = COLORS.mauve,
     },
     label = {
-      padding_right = SPACE_ITEM_PADDING,
+      padding_right = SPACES.ITEM_PADDING,
       color = COLORS.subtext0,
       highlight_color = COLORS.lavender,
       font = "sketchybar-app-font:Regular:16.0",
       y_offset = -1,
     },
-    padding_right = 1,
+    padding_right = GROUP_PADDINGS,
     padding_left = 1,
     background = {
       color = COLORS.base,
@@ -46,39 +45,38 @@ function space_api.add_space_item(space_id, idx)
       border_color = COLORS.mantle,
     },
   })
-
   space_api.created_spaces[space_id] = space
-
-  -- Single item bracket for space items to achieve double border on highlight
-  local space_bracket = SBAR.add("bracket", { space.name }, {
-    drawing = false,
-    background = {
-      color = COLORS.transparent,
-      border_color = COLORS.surface1,
-      height = 28,
-      border_width = 2,
-    },
-  })
-
-  -- Padding space
-  SBAR.add("space", "space.padding." .. idx, {
-    space = idx,
-    script = "",
-    width = GROUP_PADDINGS,
-  })
-
-  return { space = space, bracket = space_bracket }
+  return space
 end
 
 -- Highlight or unhighlight a space item based on focused
---- @param sbar_item table containing space and bracket items
+--- @param space_item SketchybarItem
 --- @param is_selected boolean whether the space is focused
-function space_api.highlight_focused_space(sbar_item, is_selected)
-  sbar_item.space:set({
+function space_api:highlight_focused_space(space_item, is_selected)
+  space_item:set({
     icon = { highlight = is_selected },
     label = { highlight = is_selected },
     background = { border_color = is_selected and COLORS.lavender or COLORS.surface1 },
   })
+end
+
+--- @param space_id string | number The ID of the space to update
+--- @param app_names string[] List of application names present in the space
+function space_api:update_space(space_id, app_names)
+  local icon_line = ""
+
+  for _, name in ipairs(app_names) do
+    if name and name ~= "" then
+      local icon = ((icons[name] == nil) and icons["default"] or icons[name])
+      icon_line = icon_line .. icon
+    end
+  end
+
+  icon_line = icon_line ~= "" and icon_line or "—"
+
+  SBAR.animate("tanh", 10, function()
+    self.created_spaces[space_id]:set({ label = icon_line })
+  end)
 end
 
 return space_api

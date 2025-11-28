@@ -35,23 +35,21 @@ local Window_Manager = {
     window_change = "space_windows_change", -- TODO: replace with real event name
     focus_change = "aerospace_workspace_change",
   },
-  spaces = {},
   observer = nil,
 }
 
 function Window_Manager:init()
   for i, workspace in ipairs(aerospace_workspaces) do
     local selected = workspace == initial_current_workspace
-    local item = sbar_utils.add_space_item(workspace, i)
-    self.spaces[i] = item.space
-    sbar_utils.highlight_focused_space(item, selected)
+    local space_item = sbar_utils:add_space_item(workspace, i)
+    sbar_utils:highlight_focused_space(space_item, selected)
 
-    item.space:subscribe(self.events.focus_change, function(env)
+    space_item:subscribe(self.events.focus_change, function(env)
       local selected = env.FOCUSED_WORKSPACE == workspace
-      sbar_utils.highlight_focused_space(item, selected)
+      sbar_utils:highlight_focused_space(space_item, selected)
     end)
 
-    item.space:subscribe("mouse.clicked", function(env)
+    space_item:subscribe("mouse.clicked", function(env)
       LOG:info(env.NAME)
       self:perform_switch_desktop(env.BUTTON, env.SID)
     end)
@@ -85,27 +83,9 @@ function Window_Manager:perform_switch_desktop(button, sid)
 end
 
 function Window_Manager:update_space_label()
-  for i, workspace in ipairs(aerospace_workspaces) do
-    SBAR.exec("aerospace list-windows --workspace " .. workspace .. " --format '%{app-name}' --json ", function(apps)
-      local icon_line = ""
-      local no_app = true
-      for i, app in ipairs(apps) do
-        no_app = false
-        local app_name = app["app-name"]
-        local lookup = app_icons[app_name]
-        local icon = ((lookup == nil) and app_icons["default"] or lookup)
-        icon_line = icon_line .. " " .. icon
-      end
-
-      if no_app then
-        icon_line = " —"
-      end
-
-      SBAR.animate("tanh", 10, function()
-        self.spaces[i]:set({
-          label = icon_line,
-        })
-      end)
+  for _, workspace in ipairs(aerospace_workspaces) do
+    SBAR.exec("aerospace list-windows --workspace " .. workspace .. " --format '%{app-name}' ", function(apps)
+      sbar_utils:update_space(workspace, parse_string_to_table(apps))
     end)
   end
 end
