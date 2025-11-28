@@ -94,11 +94,14 @@ return setmetatable({
   ["Font Book"] = ":book:",
 
   -- Developer
+  ["Apifox"] = ":apifox:",
+  ["PicList"] = ":photo:",
   ["OrbStack"] = ":orbstack:",
   ["GitHub Desktop"] = ":git_hub:",
   ["Android Studio"] = ":android_studio:",
   ["WebStorm"] = ":web_storm:",
   ["Sublime Text"] = ":sublime_text:",
+  ["NeoHtop"] = ":activity_monitor:",
 
   -- Multimedia
   ["VLC"] = ":vlc:",
