@@ -1,6 +1,8 @@
 ---@meta sketchybar
 
 -- #region SketchybarItem API
+
+-- An item in Sketchybar, see https://felixkratz.github.io/SketchyBar/config/items for details
 ---@class SketchybarItem
 ---@field name string
 local SketchybarItem = {}
@@ -23,6 +25,8 @@ function SketchybarItem:push(values) end
 -- #endregion SketchybarItem
 
 -- #region Sketchybar API
+
+-- This class provides the main interface to interact with Sketchybar
 ---@class Sketchybar
 local Sketchybar = {}
 

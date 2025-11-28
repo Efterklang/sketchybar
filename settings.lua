@@ -1,6 +1,8 @@
+--- @type "macos_native" | "aerospace"
 WINDOW_MANAGER = "macos_native"
+--- @type "gnix" | "compact"
 PRESET = "gnix"
---- Select the theme of sketchybar, pick one from `./themes/<theme_name>.lua`
+--- @type "catppuccin_mocha" | "catppuccin_latte" | "rose_pine" | "tokyo_night"
 THEME = "catppuccin_mocha"
 
 SBAR_HOME = (os.getenv("HOME") or "~") .. "/.config/sketchybar/"
@@ -53,8 +55,11 @@ MODULES = {
   music = { enable = true },
 }
 
-SPACE_LABEL = "greek_uppercase"
-SPACE_ITEM_PADDING = 12
+SPACES = {
+  --- @type "greek_uppercase" | "greek_lowercase" | nil
+  ID_STYLE = "greek_uppercase",
+  ITEM_PADDING = 12,
+}
 
 MUSIC = {
   CONTROLLER = "media-control",
