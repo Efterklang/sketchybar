@@ -71,6 +71,7 @@ return setmetatable({
   ["Vim"] = ":vim:",
   ["VimR"] = ":vim:",
   ["Emacs"] = ":emacs:",
+  ["Zed"] = ":zed:",
 
   -- Terminal
   ["Alacritty"] = ":alacritty:",
