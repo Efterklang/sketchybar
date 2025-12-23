@@ -9,6 +9,7 @@ utils.get_app_status = function(CFBundleIdentifier, item)
     local label_prev = item:query().label.value
 
     if label_match and label_match ~= "" then
+      item:set({icon={drawing=true}})
       if label_match ~= label_prev then -- only animate on change
         SBAR.animate("tanh", 15, function()
           item:set({ label = { drawing = true, string = label_match, y_offset = 5 } })
@@ -18,7 +19,7 @@ utils.get_app_status = function(CFBundleIdentifier, item)
         item:set({ label = { drawing = true, string = label_match } })
       end
     else
-      item:set({ label = { drawing = false } })
+      item:set({ icon={drawing=false}, label = { drawing = false } })
     end
   end)
 end

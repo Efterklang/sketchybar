@@ -7,6 +7,7 @@ local qq = SBAR.add("item", "QQ", {
   icon = {
     string = ICONS.qq,
     color = COLORS.blue,
+    drawing = false,
   },
   update_freq = update_freq,
   click_script = "open -a QQ",
@@ -18,6 +19,7 @@ local wechat = SBAR.add("item", "WeChat", {
     string = ICONS.wechat,
     font = { size = 20.0 },
     color = COLORS.green,
+    drawing = false,
   },
   update_freq = update_freq,
   click_script = "open -a WeChat",
