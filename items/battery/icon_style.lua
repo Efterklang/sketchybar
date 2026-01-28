@@ -7,6 +7,16 @@ local battery = SBAR.add("item", "battery", {
 })
 
 battery:subscribe({ "routine", "power_source_change", "system_woke" }, function()
+  local function getColor(battery_percent)
+    if battery_percent <= 20 then
+      return COLORS.red
+    elseif battery_percent <= 40 then
+      return COLORS.peach
+    else
+      return COLORS.green
+    end
+  end
+
   SBAR.exec("pmset -g batt", function(batt_info)
     local icon, color = "!", COLORS.green
     local _, _, charge = batt_info:find("(%d+)%%")
@@ -17,6 +27,27 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
 
     if charging then
       icon = ICONS.battery.charging
+      -- if charge >= 100 then
+      --   icon = ICONS.battery.charging_100
+      -- elseif charge >= 90 then
+      --   icon = ICONS.battery.charging_90
+      -- elseif charge >= 80 then
+      --   icon = ICONS.battery.charging_80
+      -- elseif charge >= 70 then
+      --   icon = ICONS.battery.charging_70
+      -- elseif charge >= 60 then
+      --   icon = ICONS.battery.charging_60
+      -- elseif charge >= 50 then
+      --   icon = ICONS.battery.charging_50
+      -- elseif charge >= 40 then
+      --   icon = ICONS.battery.charging_40
+      -- elseif charge >= 30 then
+      --   icon = ICONS.battery.charging_30
+      -- elseif charge >= 20 then
+      --   icon = ICONS.battery.charging_20
+      -- else
+      --   icon = ICONS.battery.charging_10
+      -- end
     else
       if charge then
         if charge > 80 then
@@ -27,14 +58,12 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
           icon = ICONS.battery._50
         elseif charge > 20 then
           icon = ICONS.battery._25
-          color = COLORS.peach
         else
           icon = ICONS.battery._0
-          color = COLORS.red
         end
       end
     end
-    battery:set({ icon = { string = icon, color = color } })
+    battery:set({ icon = { string = icon, color = getColor(charge) } })
   end)
 end)
 
