@@ -1,7 +1,6 @@
 -- Load theme from themes directory
 local theme_name = THEME or "catppuccin_mocha"
-local theme_path = "themes/" .. theme_name
-local success, colors = pcall(require, theme_path)
+local success, colors = pcall(require, "themes/" .. theme_name)
 
 -- Fallback to catppuccin_mocha if theme not found
 if not success then
