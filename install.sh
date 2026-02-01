@@ -51,7 +51,7 @@ install_sketchybar() {
     brew install lua jq switchaudio-osx media-control imagemagick
     brew tap FelixKratz/formulae
     brew install sketchybar
-    brew install --cask font-sketchybar-app-font font-maple-mono-nf-cn
+    brew install --cask font-sketchybar-app-font font-maple-mono-nf-cn font-recursive-mono-nerd-font
     success "Installed dependencies."
     log "Installing sketchybar-system-stats plugin..."
     brew tap joncrangle/tap

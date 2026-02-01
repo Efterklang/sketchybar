@@ -27,8 +27,8 @@ PRESET_OPTIONS = {
 }
 
 FONT = {
-  icon_font = "Maple Mono NF CN",
-  label_font = "Maple Mono NF CN", -- SF Mono, Monaspace Radon
+  icon_font = "RecMonoCasual Nerd Font",
+  label_font = "RecMonoCasual Nerd Font", -- SF Mono, Monaspace Radon
   style_map = {
     ["Regular"] = "Regular",
     ["Semibold"] = "Medium",
