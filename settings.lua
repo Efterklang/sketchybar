@@ -11,7 +11,7 @@ HELPERS_HOME = SBAR_HOME .. "helpers/"
 
 PRESET_OPTIONS = {
   gnix = {
-    BOREDER_WIDTH = 3,
+    BORDER_WIDTH = 3,
     HEIGHT = 32,
     Y_OFFSET = 1,
     MARGIN = 5,

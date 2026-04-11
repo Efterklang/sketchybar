@@ -11,7 +11,7 @@ local preset_conf = PRESET_OPTIONS[PRESET] or PRESET_OPTIONS["gnix"]
 SBAR.bar({
   color = COLORS.base,
   height = preset_conf.HEIGHT,
-  border_width = preset_conf.BOREDER_WIDTH,
+  border_width = preset_conf.BORDER_WIDTH,
   border_color = COLORS.surface0,
   corner_radius = preset_conf.CORNER_RADIUS,
   blur_radius = 15,
