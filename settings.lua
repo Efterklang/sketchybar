@@ -18,7 +18,7 @@ PRESET_OPTIONS = {
     CORNER_RADIUS = 10,
   },
   compact = {
-    BOREDER_WIDTH = 0,
+    BORDER_WIDTH = 0,
     HEIGHT = 27,
     Y_OFFSET = 0,
     MARGIN = 0,
