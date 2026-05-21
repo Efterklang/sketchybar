@@ -199,9 +199,16 @@ SBAR.add("bracket", "music.controls", {
 
 -- #region Callbacks functions for updating music info
 local track_info_updater = function(title, artist, album)
+  if title == nil or title == "" then
+    music_anchor:set({ label = "" })
+    track_title:set({ label = "" })
+    track_artist:set({ label = "" })
+    track_album:set({ label = "" })
+    return
+  end
+
   music_anchor:set({ label = title })
   track_title:set({ label = title })
-  -- 检查是否为空字符串或nil
   local display_artist = (artist and artist ~= "") and artist or MUSIC.DEFAULT_ARTIST
   local display_album = (album and album ~= "") and album or MUSIC.DEFAULT_ALBUM
 

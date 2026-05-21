@@ -26,17 +26,22 @@ end
 
 -- #region Info Updaters
 function media_control.stats(callback)
-  -- 使用 media-control get 获取播放状态
   SBAR.exec("media-control get -h", function(result)
-    -- Note: media-control get 不提供 repeat 和 shuffle 信息
-    -- 如果需要这些信息，可能需要使用其他命令或保持原有实现
-    callback(result.playing, false, false)
+    if result == nil or result == "null" then
+      callback(false, false, false)
+    else
+      callback(result.playing, false, false)
+    end
   end)
 end
 
 function media_control.update_current_track(callback)
   SBAR.exec("media-control get -h", function(result)
-    callback(result.title, result.artist, result.album)
+    if result == nil or result == "null" then
+      callback(nil, nil, nil)
+    else
+      callback(result.title, result.artist, result.album)
+    end
   end)
 end
 
