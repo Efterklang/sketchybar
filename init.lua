@@ -14,7 +14,7 @@ SBAR.bar({
   border_width = preset_conf.BORDER_WIDTH,
   border_color = COLORS.surface0,
   corner_radius = preset_conf.CORNER_RADIUS,
-  blur_radius = 15,
+  blur_radius = 0,
   shadow = { drawing = true },
   sticky = true,
   font_smoothing = true,

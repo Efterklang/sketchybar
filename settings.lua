@@ -2,8 +2,8 @@
 WINDOW_MANAGER = "macos_native"
 --- @type "gnix" | "compact"
 PRESET = "gnix"
---- @type "catppuccin_mocha" | "catppuccin_latte" | "rose_pine" | "tokyo_night" | "nord_light"
-THEME = "catppuccin_mocha"
+--- @type "catppuccin_mocha" | "catppuccin_latte" | "rose_pine" | "tokyo_night" | "nord_light" | "nord"
+THEME = "nord"
 
 SBAR_HOME = (os.getenv("HOME") or "~") .. "/.config/sketchybar/"
 ITEMS_HOME = SBAR_HOME .. "items/"
