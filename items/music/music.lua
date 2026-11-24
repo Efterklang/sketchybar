@@ -133,7 +133,7 @@ local play_btn = SBAR.add("item", "music.play", {
   position = popup_position,
   background = {
     height = 40,
-    corner_radius = 20,
+    corner_radius = 10,
     color = COLORS.surface0,
     border_color = COLORS.surface1,
     border_width = 2,
@@ -190,7 +190,7 @@ SBAR.add("bracket", "music.controls", {
 }, {
   background = {
     color = COLORS.surface0,
-    corner_radius = 11,
+    corner_radius = 10,
     drawing = true,
   },
   y_offset = CONTROLS_Y_OFFSET,

@@ -229,7 +229,7 @@ SBAR.add("item", "weather.details", {
   icon = { drawing = false },
   drawing = false,
   background = {
-    corner_radius = 12,
+    corner_radius = 10,
     drawing = true,
   },
   padding_left = 7,

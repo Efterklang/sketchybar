@@ -28,7 +28,7 @@ weather_temp=(
 
 weather_details=(
 	drawing=off
-	background.corner_radius=12
+	background.corner_radius=10
 	padding_left=7
 	padding_right=7
 	icon.font="$FONT:Bold:14.0"

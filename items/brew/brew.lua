@@ -26,7 +26,7 @@ local brew_details = SBAR.add("item", "brew.details", {
     color = COLORS.maroon,
   },
   background = {
-    corner_radius = 12,
+    corner_radius = 10,
     padding_left = 5,
     padding_right = 10,
   },
